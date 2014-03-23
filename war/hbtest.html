@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/handlebars-v1.3.0.js"></script>
+
+<script>
+	$(document)
+			.ready(
+					function() {
+
+						var items = '{items: [{name: "Handlebars", emotion: "love"},{name: "Mustache", emotion: "enjoy"},{name: "SproutCore", emotion: "want to learn"}]}';
+
+						var templateScript = document.getElementById('header');
+						console.log(templateScript);
+
+						var template = Handlebars
+								.compile(templateScript.innerHTML);
+
+						console
+								.log(template(JSON
+										.stringify('{"items": [{"name": "Handlebars","emotion": "love"},{"name": "Mustache","emotion": "enjoy"},{"name": "SproutCore","emotion": "want to learn"}]}')));
+					});
+</script>
+</head>
+<body>
+
+
+	<div id="customers"></div>
+	<script id="header" type="text/x-handlebars-template">
+<ul>
+  {{#each items}}
+    <li>{{name}}</li>
+  {{/each}}
+</ul>
+</script>
+
+</body>
+</html>

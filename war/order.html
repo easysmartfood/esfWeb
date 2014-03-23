@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Custom Navbar Template with Logo for Bootstrap 3</title>
+
+<!-- Bootstrap core CSS -->
+<!-- <link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ -->
+
+
+<!-- <!-- Bootstrap core CSS -->
+<link href="css/bootstrap_v1.css" rel="stylesheet">
+
+<!-- 
+<link href="css/bootstrap.min_v1.css" rel="stylesheet">
+ -->
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+	rel="stylesheet">
+
+
+
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/handlebars-v1.3.0.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jscart.js"></script>
+
+
+<style>
+body { /* adjust this if the height of the menu bar changes */
+	background: url('');
+	font-size: 2 5px;
+	color: #000;
+}
+
+.order {
+	background: #afd437;
+}
+
+.nav {
+	margin-top: 28px;
+	/* this is a faux center fix for the nav options - adjust this if you wish to change the logo height or the font of the menu items */
+}
+
+ul {
+	list-style-type: none;
+}
+
+div#orderDetails {
+	border-style: solid;
+	border-radius: 10px;
+	border-color: #526907;
+	padding: 30px;
+}
+
+li {
+	margin-top: 25px;
+	display: inline-block;
+}
+</style>
+<script>
+	$(document).ready(
+			function() {
+
+				var query = window.location.search;
+				console.log(query);
+				// Handler for .ready() called.
+				var jqxhr = $
+						.getJSON(
+								"http://1.easysmartfood.appspot.com/restaurant"
+										+ query, function() {
+									console.log("success");
+								}).done(function() {
+
+							var restArr = jqxhr.responseJSON;
+							console.log("second success" + restArr[0]);
+							var source = $("#foodmenuTemplate").html();
+							var template = Handlebars.compile(source);
+
+							var html = template(restArr[0]);
+							$('div#restaurantDetails').after(html);
+
+						}).fail(function() {
+							console.log("error");
+						}).always(function() {
+							console.log("complete");
+						});
+
+				var foodItemReq = $.getJSON(
+						"http://1.easysmartfood.appspot.com/fooditems/restaurant"
+								+ query, function() {
+							console.log("success");
+						}).done(function() {
+
+					var foodArr = foodItemReq.responseJSON;
+					console.log('foodItems:' + JSON.stringify(foodArr));
+					var foodSource = $("#foodMenu").html();
+					console.log(foodSource);
+					try {
+						var foodTemplate = Handlebars.compile(foodSource);
+						var html = foodTemplate(foodArr);
+					} catch (err) {
+						console.log('Handle Bar' + err);
+					}
+					$('div#home').after(html);
+
+				}).fail(function(err) {
+					console.log("error" + err);
+				}).always(function() {
+					console.log("complete");
+				});
+
+				var offset = $('div#orderDetails').offset();
+				var topPadding = 5;
+
+				$(window).scroll(
+						function() {
+
+							console.log(offset.top);
+							console.log($(window).scrollTop());
+							if ($(window).scrollTop() > offset.top) {
+								$('div#orderDetails').stop().animate(
+										{
+											marginTop : $(window).scrollTop()
+													- offset.top + topPadding
+										});
+							} else {
+								$('div#orderDetails').stop().animate({
+									marginTop : 0
+								});
+							}
+							;
+						});
+
+			});
+</script>
+
+<script>
+	simpleCart.email = "email@address.com";
+	simpleCart.checkoutTo = PayPal;
+	// simpleCart.merchantId = "118575326044237";
+	// simpleCart.checkoutTo = GoogleCheckout;
+	simpleCart.currency = USD;
+	// simpleCart.currency = GBP;
+	// simpleCart.currency = EUR;
+	simpleCart.taxRate = 0.078;
+	// simpleCart.shippingFlatRate = 5.25;
+	simpleCart.shippingQuantityRate = 1.00;
+
+	/* 
+	 CartItem.prototype.shipping = function(){
+	 if( this.size ){
+	 switch( this.size.toLowerCase() ){
+	 case 'small':
+	 return this.quantity * 10.00;
+	 case 'medium':
+	 return this.quantity * 12.00;
+	 case 'large':
+	 return this.quantity * 15.00;
+	 case 'bull':
+	 return 45.00;
+	 default:
+	 return this.quantity * 5.00;
+	 }
+	 }
+	 };
+	 */
+
+	simpleCart.cartHeaders = [ "Thumb_image_noHeader", "Name",
+			"Size_input_div_div", "Price", "decrement_noHeader", "Quantity",
+			"increment_noHeader", "remove_noHeader", "Total" ];
+</script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+					<span class="sr-only"> Toggle navigation </span> <span
+						class="icon-bar"> </span> <span class="icon-bar"> </span> <span
+						class="icon-bar"> </span>
+				</button>
+				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+				<a class="navbar-brand logo-nav" href="index.php"> <img
+					src="images/FINAL_image1.png" class=""
+					style="width: 150px; height: 75px;">
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div
+				class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="https://www.google.com"><button type="button"
+								class="btn btn-primary">How it Works?</button></a></li>
+
+					<li><a href="/about.html">About</a></li>
+					<li><a href="/workwithus.html">Work With Us?</a></li>
+					<li><a href="/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-lg-4" id="restaurantImg">
+				<img
+					src="http://cdn2.bigcommerce.com/n-zfvgw8/m0umbuw/products/345/images/555/logo__55720.1391856856.220.220.png" />
+			</div>
+
+			<div class="col-lg-4" id="restaurantDetails"></div>
+			<script id="foodmenuTemplate" type="text/x-handlebars-template">
+				<h3>{{name}}</h3>
+				<h5>Phone Number: {{phone}}</h5>
+			</script>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-lg-8" id="foodSelector" style="color: #000;">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="active"><a href="#home" data-toggle="tab">Popular</a></li>
+					<li><a href="#profile" data-toggle="tab">Veg</a></li>
+					<li><a href="#profile" data-toggle="tab">Non-Veg</a></li>
+					<li><a href="#settings" data-toggle="tab">Beverages</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="home"></div>
+
+					<script id="foodMenu" type="text/x-handlebars-template">
+ 					{{#each foodItems}} 
+					<ul><li class="simpleCart_shelfItem"><h3 class="item_name col-lg-6">{{name}}</h3><p class="col-lg-2"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-2"><input type="text" class="item_quantity" value="1"style="width: 30px; border-radius: 3px; margin-left: 10px;" /></p><p class="col-lg-2"><input type="button" class="item_add btn btn-default"value="Add" /></p></li></ul>{{/each}}
+					</script>
+
+					<div class="tab-pane" id="profile">
+
+						<ul>
+							<li class="simpleCart_shelfItem">
+								<h3 class="item_name col-lg-6">{{name}}</h3>
+
+								<p class="col-lg-2">
+									<span class="item_price">{{price}}</span>
+
+								</p>
+								<p class="col-lg-2">
+									<input type="text" class="item_quantity" value="1"
+										style="width: 30px; border-radius: 3px; margin-left: 10px;" />
+								</p>
+								<p class="col-lg-2">
+									<input type="button" class="item_add btn btn-default"
+										value="Add" />
+								</p>
+
+
+							</li>
+
+
+							<li class="simpleCart_shelfItem">
+								<h3 class="item_name col-lg-6">{{name}}</h3>
+
+								<p class="col-lg-2">
+									<span class="item_price">10.00</span>
+
+								</p>
+								<p class="col-lg-2">
+									<input type="text" class="item_quantity" value="1"
+										style="width: 30px; border-radius: 3px; margin-left: 10px;" />
+								</p>
+								<p class="col-lg-2">
+									<input type="button" class="item_add btn btn-default"
+										value="Add" />
+								</p>
+
+
+							</li>
+
+
+							<li class="simpleCart_shelfItem">
+								<h3 class="item_name col-lg-6">{{name}}</h3>
+
+								<p class="col-lg-2">
+									<span class="item_price">12.00</span>
+
+								</p>
+								<p class="col-lg-2">
+									<input type="text" class="item_quantity" value="1"
+										style="width: 30px; border-radius: 3px; margin-left: 10px;" />
+								</p>
+								<p class="col-lg-2">
+									<input type="button" class="item_add btn btn-default"
+										value="Add" />
+								</p>
+
+
+							</li>
+
+
+						</ul>
+
+					</div>
+					<div class="tab-pane" id="messages">Not Available</div>
+					<div class="tab-pane" id="settings">Not Available</div> 
+				</div>
+
+
+			</div>
+
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-4" id="orderDetails">
+
+						<h2 style="color: #000;">Order Details</h2>
+
+						<div class="simpleCart_items"></div>
+
+						<br> <br>
+						<div class="row">
+							<span class="col-lg-4">Total</span> <span
+								class="simpleCart_quantity col-lg-4"></span> <span
+								class="simpleCart_total col-lg-4"></span> <br />
+
+						</div>
+						<!-- 	<a href="javascript:;" class="simpleCart_view">Viewcart</a> <br>
+ -->
+						<!-- SubTotal: <span class="simpleCart_total"></span> <br /> Tax: <span
+					class="simpleCart_taxCost"></span><br /> Shipping: <span
+					class="simpleCart_shippingCost"></span><br />
+				 -->
+
+						<br>
+						<div class="row">
+							<a href="javascript:;" class="simpleCart_empty col-lg-6">Empty
+								Cart</a>
+						</div>
+						<br>
+
+						<div class="row">
+
+							<a href="checkout.html"><button type="submit"
+									class="btn btn-default col-lg-12" id="search">Checkout</button></a>
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+	<!-- /.container -->
+
+	<!-- JavaScript -->
+
+
+
+
+
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

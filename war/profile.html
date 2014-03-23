@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Custom Navbar Template with Logo for Bootstrap 3</title>
+
+<!-- <!-- Bootstrap core CSS -->
+<link href="css/bootstrap_v1.css" rel="stylesheet">
+
+<!-- 
+<link href="css/bootstrap.min_v1.css" rel="stylesheet">
+ -->
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+	rel="stylesheet">
+
+
+
+<style>
+h4 {
+	color: white;
+}
+
+h2 {
+	color: #526907;
+}
+
+.bg {
+	border-radius: 15px;
+	background-color: rgba(39, 63, 43, 0.4);
+	margin-bottom: 10%;
+}
+
+body { /* adjust this if the height of the menu bar changes */
+	background: url('');
+	font-size: 2 5px;
+}
+
+.carousel-control {
+	padding-top: 10%;
+	width: 5%;
+}
+
+.cslpic {
+	width: 126px;
+	height: 90px;
+}
+
+form#searchForm {
+	margin-bottom: 20px;
+}
+
+h1 {
+	color: white;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+div#search {
+	border-style: solid;
+	border-width: 8px;
+	border-color: #526907;
+	border-radius: 15px;
+	color: white;
+	background: white;
+	color: white;
+}
+
+label {
+	font-size: 20px;
+	color: #526907;
+}
+
+h1 {
+	color: white;
+	background-color: rgba(39, 63, 43, 0.4);
+}
+
+a {
+	color: white;
+}
+
+.navbar-inverse {
+	border-color: white;
+}
+
+.order {
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.nav {
+	margin-top: 28px;
+	/* this is a faux center fix for the nav options - adjust this if you wish to change the logo height or the font of the menu items */
+}
+
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open .dropdown-toggle.btn-primary
+	{
+	color: #ffffff;
+	background-color: #526907;
+	border-color: #FFFFFF;
+}
+
+.ui-autocomplete {
+	max-height: 100px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+</style>
+
+
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+					<span class="sr-only"> Toggle navigation </span> <span
+						class="icon-bar"> </span> <span class="icon-bar"> </span> <span
+						class="icon-bar"> </span>
+				</button>
+				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+				<a class="navbar-brand logo-nav" href="index.php"> <img
+					src="images/FINAL_image1.png" class=""
+					style="width: 150px; height: 75px;">
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#about"> About </a></li>
+					<li><a href="#services"> Services </a></li>
+					<li><a href="#contact"> Contact </a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<br>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-lg-4"></div>
+
+			<div class="col-lg-8">
+
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+					<h2 style="">Create Account to Eat Smart !</h2>
+				</div>
+
+				<form class="form-horizontal" role="form" id="profileform">
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">User
+							Name </label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Username"
+								id="username">
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Password
+						</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Password"
+								id="password">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Full
+							Name</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Full name"
+								id="fullname">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Contact
+							Number</label>
+						<div class="col-lg-6">
+							<input type="tel" class="form-control"
+								placeholder="Mobile number" id="contactnumber">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail3" class="col-lg-6 control-label">Email</label>
+						<div class="col-lg-6">
+							<input type="email" class="form-control" id="email"
+								placeholder="Email">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Address</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Address1"
+								id="address1">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Address2</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Address2"
+								id="address2">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Land
+							Mark </label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Phone"
+								id="landmark">
+						</div>
+					</div>
+
+
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">City</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="City"
+								id="city">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Postal
+							Code </label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Zip"
+								id="zip">
+						</div>
+					</div>
+
+
+
+
+					<div class="form-group">
+						<div class="col-lg-offset-6 col-xs-6 col-sm-6 col-md-6">
+							<button type="submit" class="btn btn-default btn-lg btn-block"
+								id="createprofile">Create My Account</button>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6"></div>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+	<br>
+	<br>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 text-center bg">
+
+					<div class="col-lg-4 col-xs-12 col-sm-12">
+
+						<h4>Kasim Lane, Kaloor Kochi, India 682017</h4>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081"
+							frameborder="0" style="border: 0"></iframe>
+
+					</div>
+
+					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
+
+						<h4>
+							Phone: +917558943030, +919388803073<br> <a
+								href="mailto:easysmartfood@gmail.com"><u>easysmartfood@gmail.com</u></a>
+
+
+						</h4>
+					</div>
+
+					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
+						<ul class="list-inline">
+							<li><a href="https://www.facebook.com/easysmartfood"><i
+									class="fa fa-facebook fa-3x"></i></a></li>
+							<li><i class="fa fa-google-plus-square fa-3x"></i></li>
+
+						</ul>
+					</div>
+					<p>Copyright © Company 2014</p>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- /.container -->
+
+
+	<!-- <script src="js/bootstrap.min.js">
+		
+	</script>
+ -->
+
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+
+							$('#profileform')
+									.validate(
+											{
+												// Specify the validation rules
+												rules : {
+													fullname : "required",
+													email : {
+														required : true,
+														email : true
+													},
+													password : {
+														required : true,
+														minlength : 5
+													},
+												},
+
+												// Specify the validation error messages
+												messages : {
+													fullname : "Please enter your fullname",
+
+													password : {
+														required : "Please provide a password",
+														minlength : "Your password must be at least 5 characters long"
+													},
+													email : "Please enter a valid email address"
+												},
+
+												submitHandler : function(form) {
+
+													submitUser();
+
+												}
+
+											});
+
+							function submitUser() {
+
+								var username = $('#username').val();
+								var password = $('#password').val();
+								var fullname = $('#fullname').val();
+								var contactnumber = $('#contactnumber').val();
+								var email = $('#email').val();
+								var address1 = $('#address1').val();
+								var address2 = $('#address2').val();
+								var landmark = $('#landmark').val();
+								var city = $('#city').val();
+								var zip = $('#zip').val();
+
+								var profileObj = new Profile(username,
+										password, fullname, contactnumber,
+										email, address1, address2, landmark,
+										city, zip);
+								console.log(profileObj);
+								var userdata = JSON.stringify(profileObj);
+
+								console.log('posting to :' + userdata);
+								var jqxhr = $
+										.post(
+												"https://easysmartfood.appspot.com/user",
+												userdata, function() {
+													alert("success");
+												}).done(function() {
+											alert("second success");
+										}).fail(function() {
+											alert("error");
+											console.log(this);
+										}).always(function() {
+											alert("finished");
+										});
+
+							}
+
+							function Profile(username, password, fullname,
+									contactnumber, email, address1, address2,
+									landmark, city, zip) {
+								this.username = username;
+								this.password = password;
+								this.fullname = fullname;
+								this.contactnumber = contactnumber;
+								this.email = email;
+								this.address1 = address1;
+								this.address2 = address2;
+								this.landmark = landmark;
+								this.city = city;
+								this.zip = zip;
+
+							}
+
+						});
+	</script>
+
+</body>
+
+</html>
