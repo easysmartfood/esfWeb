@@ -27,10 +27,15 @@
 
 
 <style>
-h4 {
-	color: white;
+.error {
+	font-weight: normal;
+	font-size: 15px;
 }
+h3{
 
+color:#526907;
+
+}
 h2 {
 	color: #526907;
 }
@@ -159,7 +164,7 @@ a {
 
 			<div class="col-lg-4"></div>
 
-			<div class="col-lg-8">
+			<div class="col-lg-8" id="userregistration">
 
 
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
@@ -172,7 +177,7 @@ a {
 							Name </label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Username"
-								id="username">
+								id="username" name="username">
 						</div>
 					</div>
 
@@ -182,7 +187,7 @@ a {
 						</label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Password"
-								id="password">
+								id="password" name="password">
 						</div>
 					</div>
 
@@ -191,7 +196,7 @@ a {
 							Name</label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Full name"
-								id="fullname">
+								id="fullname" name="fullname">
 						</div>
 					</div>
 
@@ -200,7 +205,8 @@ a {
 							Number</label>
 						<div class="col-lg-6">
 							<input type="tel" class="form-control"
-								placeholder="Mobile number" id="contactnumber">
+								placeholder="Mobile number" id="contactnumber"
+								name="contactnumber">
 						</div>
 					</div>
 
@@ -208,7 +214,7 @@ a {
 						<label for="inputEmail3" class="col-lg-6 control-label">Email</label>
 						<div class="col-lg-6">
 							<input type="email" class="form-control" id="email"
-								placeholder="Email">
+								placeholder="Email" name="email">
 						</div>
 					</div>
 
@@ -216,7 +222,7 @@ a {
 						<label for="inputPassword3" class="col-lg-6 control-label">Address</label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Address1"
-								id="address1">
+								id="address1" name="address1">
 						</div>
 					</div>
 
@@ -224,7 +230,7 @@ a {
 						<label for="inputPassword3" class="col-lg-6 control-label">Address2</label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Address2"
-								id="address2">
+								id="address2" name="address2">
 						</div>
 					</div>
 
@@ -233,7 +239,7 @@ a {
 							Mark </label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Phone"
-								id="landmark">
+								id="landmark" name="landmark">
 						</div>
 					</div>
 
@@ -243,7 +249,7 @@ a {
 						<label for="inputPassword3" class="col-lg-6 control-label">City</label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="City"
-								id="city">
+								id="city" name="city">
 						</div>
 					</div>
 
@@ -252,7 +258,7 @@ a {
 							Code </label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Zip"
-								id="zip">
+								id="zip" name="zip">
 						</div>
 					</div>
 
@@ -351,7 +357,14 @@ a {
 											{
 												// Specify the validation rules
 												rules : {
-													fullname : "required",
+
+													username : {
+														required : true
+
+													},
+													fullname : {
+														required : true
+													},
 													email : {
 														required : true,
 														email : true
@@ -360,12 +373,17 @@ a {
 														required : true,
 														minlength : 5
 													},
+													contactnumber : {
+														required : true
+
+													}
 												},
 
 												// Specify the validation error messages
 												messages : {
+													username : "Please enter a username",
 													fullname : "Please enter your fullname",
-
+													contactnumber : "Please enter your contact number",
 													password : {
 														required : "Please provide a password",
 														minlength : "Your password must be at least 5 characters long"
@@ -376,7 +394,6 @@ a {
 												submitHandler : function(form) {
 
 													submitUser();
-
 												}
 
 											});
@@ -406,14 +423,18 @@ a {
 										.post(
 												"https://easysmartfood.appspot.com/user",
 												userdata, function() {
-													alert("success");
-												}).done(function() {
-											alert("second success");
-										}).fail(function() {
-											alert("error");
-											console.log(this);
+
+												})
+										.done(
+												function() {
+
+													$('#userregistration')
+															.html('<h3>Thank You. Your Account has been created Successfully.</h3>');
+
+												}).fail(function() {
+
 										}).always(function() {
-											alert("finished");
+
 										});
 
 							}
