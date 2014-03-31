@@ -5,8 +5,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
 
 <title>Custom Navbar Template with Logo for Bootstrap 3</title>
 
@@ -32,16 +30,22 @@
 	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
 
-<script type="text/javascript" src="js/jscart.js"></script>
-
-
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
+	
+	
+<script type="text/javascript" src="js/jscart.js"></script>
 
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="js/handlebars-v1.3.0.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ 
+ <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+ 
+ <script src="js/handlebars-v1.3.0.js"></script>
+
 
 
 <style>
@@ -70,34 +74,43 @@ span {
 
 .itemName {
 	padding: 5px;
-	margin: 5px;
+	margin-top: 10px;
 	margin-bottom: 5px;
 	font-size: 20px;
 }
 
 .item_name {
-	margin-top: 5px;
+	margin-top: 10px;
 	margin-bottom: 5px;
 	font-size: 1.2em;
 	margin-top: 5px;
 }
 
 .simpleCart_shelfItem {
-	margin-bottom: 5px;
+	margin-top: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
 }
 
 .itemPrice {
-	margin-bottom: 5px;
+	margin-top: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
 	color: #000;
+	margin-bottom: 10px;
 }
 
 .itemQuantity {
-	margin-bottom: 5px;
+	margin-top: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
 	color: #000;
 }
 
 .itemTotal {
-	margin-bottom: 5px;
+	margin-top: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
 	color: #000;
 }
 
@@ -109,10 +122,6 @@ a,a:hover {
 	border-radius: 15px;
 	background-color: rgba(39, 63, 43, 0.4);
 	margin-bottom: 5%;
-}
-
-body {
-	background: url('');
 }
 
 h4 {
@@ -129,17 +138,9 @@ ul {
 	list-style-type: none;
 }
 
-.list {
-	background-color: #343434;
-}
-
 div#orderDetails {
 	padding: 30px;
 	margin-bottom: 30px;
-}
-
-ul>li {
-	margin: 25px;
 }
 </style>
 <script>
@@ -156,11 +157,67 @@ ul>li {
 		}
 		
 		
+		var deliveryCost = 'NA';
+		
+		var deliveryDistance = 'NA';
+		
+		
+		
 	$(document).ready(
+			
+		
 			function() {
 
 				var query = window.location.search;
-				console.log(query);
+				var qryParam = query.split('=');
+								
+				var days = 30;
+				var date = new Date();
+				date.setTime(date.getTime()
+						+ (days * 24 * 60 * 60 * 1000));
+				var expires = "; expires="
+						+ date.toGMTString();
+
+				var ruuid = qryParam[1].substring(0,36)
+				if(ruuid != null){
+				document.cookie = 'esfrestuid_url'+"="
+						+ ruuid +expires;
+
+				}
+				var referringURL = document.referrer;
+				
+				var restName = getCookie('esfrestname');
+				
+				var region = getCookie('esfrestregion');
+				
+				var url = 'http://easysmartfood.appspot.com/getdeliverycharge?restaurantname='
+					+restName+'&userregion='+region;
+				
+				var deliveryDtls = $.getJSON(
+						"http://easysmartfood.appspot.com/getdeliverycharge?restaurantname="
+								+restName+'&userregion='+region, function() {
+							
+							
+									var deliveryHtml = $('#deliverycost').html();
+									var template = Handlebars.compile(deliveryHtml);
+
+									var html = template(deliveryDtls.responseJSON);
+									
+									$('div#restaurantDetails').append(html);
+
+							
+							
+													
+						}).done(function() {
+							
+							console.log('done');
+							
+						}).fail(function() {
+						
+							console.log("delivery cost"+JSON.stringify(deliveryDtls));
+						});
+				
+			
 				var jqxhr = $
 						.getJSON(
 								"http://1.easysmartfood.appspot.com/restaurant"
@@ -168,12 +225,16 @@ ul>li {
 									console.log("success");
 								}).done(function() {
 
-							var restArr = jqxhr.responseJSON;
 							
+							var restArr = jqxhr.responseJSON;
+
 							var source = $("#foodmenuTemplate").html();
 							var template = Handlebars.compile(source);
+							
+
 							var html = template(restArr[0]);
-							$('div#restaurantDetails').html(html);
+							
+							$('div#restaurantDetails').append(html);
 
 							var restImg = $("#resturantImgTemplate").html();
 							var restImgTemplate = Handlebars.compile(restImg);
@@ -268,8 +329,43 @@ ul>li {
 				});
 
 				
+						var esfuuid = getCookie('esfuuid');
+						var esfCookieValues;
+						if (esfuuid != null) {
+							esfCookieValues = esfuuid.split('|');
+
+						}else{
+							
+							$('#checkoutbutton').text('Guest Checkout');
+							
+							$('#checkoutsection').append('<a href="login.html" class="col-lg-12 col-xs-12" id="search"><h3 class="text-center">Login ?</h3></a>');
+							
+							
+							
+						}
 
 			});
+	
+	
+	
+	function getCookie(c_name) {
+		var c_value = document.cookie;
+		var c_start = c_value.indexOf(" " + c_name + "=");
+		if (c_start == -1) {
+			c_start = c_value.indexOf(c_name + "=");
+		}
+		if (c_start == -1) {
+			c_value = null;
+		} else {
+			c_start = c_value.indexOf("=", c_start) + 1;
+			var c_end = c_value.indexOf(";", c_start);
+			if (c_end == -1) {
+				c_end = c_value.length;
+			}
+			c_value = unescape(c_value.substring(c_start, c_end));
+		}
+		return c_value;
+	}
 </script>
 
 
@@ -294,14 +390,15 @@ ul>li {
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div
-				class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="https://www.google.com"><button type="button"
-								class="btn btn-primary">How it Works?</button></a></li>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><button type="button" class="btn btn-primary"
+							data-toggle="modal" data-target="#myModal">How it Works?</button></li>
+					<li><a
+						href="http://1.easysmartfood3.appspot.com/restaurantui.html">Restaurants</a>
+					<li><a href="/profile.html">Create Account</a></li>
 
-					<li><a href="/about.html">About</a></li>
-					<li><a href="/workwithus.html">Login</a></li>
+					<li><a href="/login.html">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -321,35 +418,50 @@ ul>li {
 				</script>
 			</div>
 
+
+
 			<div class="col-lg-8 col-xs-6 col-sm-6" id="restaurantDetails">
+				<script id="deliverycost" type="text/x-handlebars-template">
+
+				<div class="col-lg-4">
+				<h4>DeliveryCost : {{deliveryCost}}</h4>
+
+			</div>
+			</script>
 				<script id="foodmenuTemplate" type="text/x-handlebars-template">
 
-			<div class="col-lg-4 col-xs-12">
+			<div class="col-lg-4">
 				<h3>{{name}}</h3>
 				<h4>{{region}}</h4>
 				<h5>{{subRegion}}</h5>
+				<h4>{{deliveryCost}}</h4>
+
 			</div>
 
-			<div class="col-lg-4 col-xs-12">
+			<div class="col-lg-4">
 
-				<div class="col-lg-6 col-xs-12">
-				<h4>{{closeTime}}</h4>
-				</div>
-				
-			<div class="col-lg-6 col-xs-12">
+			<div class="col-lg-6">
 				<h4>{{openTime}}</h4>
 			</div>
+
+			<div class="col-lg-6">
+			<h4>{{closeTime}}</h4>
+			</div>
+				
+		
 		
 			
 			</div>
 			
-			<div class="col-lg-4 col-xs-12">				
+			<div class="col-lg-4">				
 				<h4>{{cuisine}}</h4>
 			</div>			
 			
 		
 			
 			</script>
+
+
 			</div>
 
 
@@ -358,28 +470,32 @@ ul>li {
 	</div>
 
 	<div class="container bg">
+
 		<div class="row">
 
-			<div class="col-lg-8 col-xs-12 responsive" id="foodSelector"
-				style="color: #000;">
+			<div class="col-lg-8 col-xs-12" id="foodSelector">
 
 				<!-- Nav tabs -->
-				<ul class="nav nav-tabs responsive" id="myTab">
-					<li class="active"><a href="#home" data-toggle="tab">Popular</a></li>
-					<li><a href="#profile" data-toggle="tab">Veg</a></li>
-					<li><a href="#nv" data-toggle="tab">Non-Veg</a></li>
-					<li><a href="#beverages" data-toggle="tab">Beverages</a></li>
+				<ul class="nav nav-tabs" data-tabs="tabs" id="myTab">
+					<li class="active col-lg-3 col-md-3 col-sm-12 col-xs-12"><a
+						href="#home" data-toggle="tab">Popular</a></li>
+					<li class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a
+						href="#profile" data-toggle="tab">Veg</a></li>
+					<li class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a
+						href="#nv" data-toggle="tab">Non-Veg</a></li>
+					<li class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a
+						href="#beverages" data-toggle="tab">Beverages</a></li>
 				</ul>
 
 				<!-- Tab panes -->
 				<div class="tab-content">
 
-					<div class="tab-pane active" id="home">
+					<div class="tab-pane active col-lg-12 col-xs-12" id="home">
 
 						<script id="foodMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8">{{name}}</h4><p class="col-lg-1"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 2px; line-height:1.9; margin-left: 5px;"/></p><p class="col-lg-2"><input type="button" class="item_add btn btn-default" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 2px; line-height:1.9; margin-left: 5px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
 					</ul>
 
 					</script>
@@ -387,12 +503,12 @@ ul>li {
 					</div>
 
 
-					<div class="tab-pane" id="profile">
+					<div class="tab-pane col-lg-12 col-xs-12" id="profile">
 
 						<script id="vegMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8">{{name}}</h4><p class="col-lg-1"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2"><input type="button" class="item_add btn btn-default" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
 					</ul>
 
 					</script>
@@ -400,12 +516,12 @@ ul>li {
 					</div>
 
 
-					<div class="tab-pane" id="nv">
+					<div class="tab-pane col-lg-12 col-xs-12" id="nv">
 
 						<script id="nonVegMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8">{{name}}</h4><p class="col-lg-1"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2"><input type="button" class="item_add btn btn-default" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
 					</ul>
 
 					</script>
@@ -413,67 +529,103 @@ ul>li {
 					</div>
 
 
-					<div class="tab-pane" id="beverages">
+					<div class="tab-pane col-lg-12 col-xs-12" id="beverages">
 
 						<script id="beverageMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-6">{{name}}</h4><p class="col-lg-2"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-2"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2"><input type="button" class="item_add btn btn-default" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-6  col-xs-12">{{name}}</h4><p class="col-lg-2 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-2 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
 					</ul>
 
 					</script>
 
 					</div>
+
 				</div>
 
 
 			</div>
 
+			<div class="container">
 
-			<div class="row">
+				<div class="row">
 
-				<div class="col-lg-4" id="orderDetails">
+					<div class="col-lg-4 col-xs-12" id="orderDetails">
 
-					<h2 style="color: #000;">Order Details</h2>
+						<h2 style="color: #000;">Order Details</h2>
 
-					<div class="simpleCart_items"></div>
+						<div class="simpleCart_items"></div>
 
-					<br> <br>
-					<div class="row">
-						<span class="col-lg-4">Total</span> <span
-							class="simpleCart_quantity col-lg-4"></span> <span
-							class="simpleCart_total col-lg-4"></span> <br />
+						<br>
+						<hr>
+						<div class="row">
 
-					</div>
-					<!-- 	<a href="javascript:;" class="simpleCart_view">Viewcart</a> <br>
+
+							<span class="col-lg-4 col-xs-4">Delivery: </span> <span
+								class="col-lg-2 col-xs-4"></span> <span
+								class="simpleCart_shippingCost col-lg-6 col-xs-4"></span> <br />
+
+							<span class="col-lg-4 col-xs-4">Total</span> <span
+								class="simpleCart_quantity col-lg-2 col-xs-4"></span> <span
+								class="simpleCart_total col-lg-6 col-xs-4"></span> <br />
+
+
+						</div>
+						<!-- 	<a href="javascript:;" class="simpleCart_view">Viewcart</a> <br>
  -->
-					<!-- SubTotal: <span class="simpleCart_total"></span> <br /> Tax: <span
+						<!-- SubTotal: <span class="simpleCart_total"></span> <br /> Tax: <span
 					class="simpleCart_taxCost"></span><br /> Shipping: <span
 					class="simpleCart_shippingCost"></span><br />
-				 -->
+					-->
 
-					<br>
-					<div class="row">
-						<a href="javascript:;" class="simpleCart_empty col-lg-6"><button
-								type="button" class="btn btn-default">Empty Cart</button></a>
+
+						<br>
+						<div class="row">
+							<a href="javascript:;" class="simpleCart_empty col-lg-6"><button
+									type="button" class="btn btn-default">Empty Cart</button></a>
+						</div>
+						<br>
+
+						<div class="row" id="checkoutsection">
+
+							<a href="checkout.html"><button type="submit"
+									class="btn btn-primary btn-lg active col-lg-12 col-xs-12"
+									id="checkoutbutton">Checkout</button></a>
+
+						</div>
+
 					</div>
-					<br>
 
-					<div class="row">
-
-						<a href="checkout.html"><button type="submit"
-								class="btn btn-primary btn-lg active col-lg-12 col-xs-12 col-xs-8"
-								id="search">Checkout</button></a>
-
-					</div>
 
 				</div>
 
 
 			</div>
-
-
 		</div>
+
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="modal fade" id="myModal" tabindex="-10000">
+				<div class="modal-dialog">
+
+					<div class="modal-content">
+
+						<div class="modal-body">
+
+							<img src="images/howitworks.jpg" class="img-responsive">
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 
@@ -519,6 +671,17 @@ ul>li {
 
 	<script src="js/bootstrap.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script>
+	
+	$('#myTab a').click(function (e) {
+		  e.preventDefault();
+		  console.log('test');
+		  $(this).tab('show');
+		});
+		
+	</script>
+
+
 </body>
 
 </html>

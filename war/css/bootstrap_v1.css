@@ -51,7 +51,7 @@ body {
 }
 
 a {
-	background: transparent;
+	/* background: transparent; */
 }
 
 a:focus {
@@ -3975,7 +3975,7 @@ border-top-left-radius
 .nav-tabs>li>a {
 	margin-right: 2px;
 	line-height: 1.428571429;
-	border: 1px solid transparent;
+	/* border: 1px solid transparent; */
 	border-radius: 4px 4px 0 0;
 }
 
@@ -3986,12 +3986,12 @@ border-top-left-radius
 .nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus
 	{
 	/* padding: 5px; */
-	color: #000000;
+	/* color: #000000; */
 	cursor: default;
-	background-color: #ffffff;
-	border: 2px solid #526907;
+	/* background-color: #ffffff; */
+	/* border: 2px solid #526907; */
 	margin-left: 20px;
-	border-bottom-color: transparent;
+	/* border-bottom-color: transparent; */
 	font-size: large;
 }
 

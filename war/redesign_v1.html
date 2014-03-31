@@ -33,9 +33,6 @@
 	margin-bottom: 10%;
 }
 
-
-
-
 h4 {
 	overflow: hidden;
 }
@@ -82,9 +79,10 @@ a {
 	color: white;
 }
 
-a:hover{
-color:white;
+a:hover {
+	color: white;
 }
+
 .navbar-inverse {
 	border-color: white;
 }
@@ -136,12 +134,14 @@ color:white;
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-					<ul class="nav navbar-nav navbar-right">
-					<li><a href="https://www.google.com"><button type="button"
-								class="btn btn-primary">How it Works?</button></a></li>
+				<ul class="nav navbar-nav navbar-right">
+					<li><button type="button" class="btn btn-primary"
+							data-toggle="modal" data-target="#myModal">How it Works?</button></li>
+					<li><a
+						href="http://1.easysmartfood3.appspot.com/restaurantui.html">Restaurants</a>
+					<li><a href="/profile.html">Create Account</a></li>
 
-					<li><a href="/about.html">About</a></li>
-					<li><a href="/workwithus.html">Login</a></li>
+					<li><a href="/login.html">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -207,7 +207,9 @@ color:white;
 							<!-- /btn-group -->
 							<input type="text" class="form-control" id="searchRestaurant">
 							<input type="hidden" id="restaurantuuid" name="restaurantuuid"
-								value="" />
+								value="" /> <input type="hidden" id="restaurantname"
+								name="restaurantname" value="" /> <input type="hidden"
+								id="restaurantregion" name="restaurantregion" value="" />
 
 						</div>
 						<!-- /input-group -->
@@ -302,7 +304,28 @@ color:white;
 	<br>
 	<br>
 
+	<div class="container">
 
+		<div class="row">
+
+			<div class="modal fade" id="myModal" tabindex="-10000">
+				<div class="modal-dialog">
+
+					<div class="modal-content">
+
+						<div class="modal-body">
+
+							<img src="images/howitworks.jpg" class="img-responsive">
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
 
 	<hr>
 
@@ -356,7 +379,7 @@ color:white;
 
 	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script
@@ -366,6 +389,7 @@ color:white;
 	<script>
 		var restUuid = '';
 		var selectedRestaurant = '';
+		var restRegsion = '';
 		$(document)
 				.ready(
 						function() {
@@ -409,7 +433,12 @@ color:white;
 																				+ restArr[k].region;
 																		console
 																				.log(restName[k]);
-																		restMapping[restName[k]] = restArr[k].uuid;
+																		restMapping[restName[k]] = restArr[k].uuid
+																				+ '|'
+																				+ restArr[k].name
+																				+ '|'
+																				+ restArr[k].region;
+
 																	}
 
 																	$(
@@ -420,15 +449,52 @@ color:white;
 																						select : function(
 																								event,
 																								ui) {
-																							var restUuid = restMapping[ui.item.value];
-																							console
-																									.log(restUuid);
+
+																							var restaurantVals = restMapping[ui.item.value];
+
+																							var values = restaurantVals
+																									.split('|');
+
+																							var restUuid = values[0];
+																							var restName = values[1];
+																							var region = values[2];
+
 																							$(
 																									'#restaurantuuid')
 																									.val(
 																											restUuid);
-																							console
-																									.log(restUuid);
+
+																							$(
+																									'#restaurantname')
+																									.val(
+																											restName);
+
+																							$(
+																									'#restaurantregion')
+																									.val(
+																											region);
+
+																							var days = 30;
+
+																							var date = new Date();
+																							date
+																									.setTime(date
+																											.getTime()
+																											+ (days * 24 * 60 * 60 * 1000));
+																							var expires = "; expires="
+																									+ date
+																											.toGMTString();
+
+																							document.cookie = 'esfrestname'
+																									+ "="
+																									+ restName
+																									+ expires;
+
+																							document.cookie = 'esfrestregion'
+																									+ "="
+																									+ region
+																									+ expires;
+
 																						}
 																					});
 
