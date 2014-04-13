@@ -12,7 +12,6 @@
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap_v1.css" rel="stylesheet">
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <link
@@ -26,6 +25,8 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
 
+<script src="http://fgnass.github.io/spin.js/spin.min.js"></script>
+
 <script src="js/handlebars-v1.3.0.js"></script>
 
 
@@ -33,6 +34,21 @@
 <script type="text/javascript" src="js/jscart.js"></script>
 
 <style>
+body {
+	background: url('');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center center;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 .btn-default,.btn-primary,.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open .dropdown-toggle.btn-primary
 	{
 	color: #ffffff;
@@ -53,6 +69,12 @@ h4,h5 {
 	border-radius: 15px;
 	background-color: rgba(39, 63, 43, 0.4);
 	margin-bottom: 5%;
+}
+
+.bg1 {
+	border-radius: 15px;
+	background-color: rgba(39, 63, 43, 0.4);
+	margin-bottom: 10%;
 }
 
 span {
@@ -122,7 +144,7 @@ a,a:hover {
 <body>
 
 	<nav class="navbar navbar-inverse">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-ex1-collapse">
@@ -131,7 +153,7 @@ a,a:hover {
 						class="icon-bar"> </span>
 				</button>
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-				<a class="navbar-brand logo-nav" href="index.php"> <img
+				<a class="navbar-brand logo-nav" href="index.html"> <img
 					src="images/FINAL_image1.png" class=""
 					style="width: 150px; height: 75px;">
 				</a>
@@ -139,32 +161,36 @@ a,a:hover {
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" class="btn btn-primary"
-							data-toggle="modal" data-target="#myModal">How it Works?</button></li>
-					<li><a
-						href="http://1.easysmartfood3.appspot.com/restaurantui.html">Restaurants</a>
+				<ul class="nav navbar-nav navbar-right" id="loginmenu">
+					<li><a href="#" data-toggle="modal" data-target="#myModal">How
+							it Works?</a></li>
+					<li><button type="button" class="btn btn-primary">
+							<a href="/restaurantui.html">Restaurants</a>
+						</button>
 					<li><a href="/profile.html">Create Account</a></li>
 
-					<li><a href="/login.html">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
+		<!-- /.container -->
 	</nav>
 
-	<div class="container">
+
+
+
+	<div class="container" id="confirmation">
 
 
 		<div class="row">
 
-			<h2>Confirm your Order</h2>
+			<h2 id="confirmationheader">Confirm your Order</h2>
 
 		</div>
 	</div>
 	<div class="container">
 
-		<div class="row bg">
+		<div class="row bg" id="checkoutcontainer">
 
 
 			<div class="col-lg-12 col-xs-12" id="checkout">
@@ -175,16 +201,36 @@ a,a:hover {
 		</div>
 	</div>
 
+	<div class="container">
+
+
+		<div class="row">
+
+			<h3 id="foodcommentssection">Comments:</h3>
+
+		</div>
+	</div>
+
+	<div class="container bg">
+
+		<textarea class="form-control" rows="5" id="foodcomments"
+			placeholder="Any Special instructions about your order ..."></textarea>
+
+
+	</div>
+
 
 	<div class="container">
 
 
 		<div class="row">
 
-			<h3>Deliver Food to below Address:</h3>
+			<h3 id="foodconfirmationheader">Deliver Food to below Address:</h3>
 
 		</div>
 	</div>
+
+
 	<div class="container bg">
 
 		<div class="row">
@@ -212,18 +258,28 @@ a,a:hover {
 
 			</script>
 
+
 			</div>
 
 
 			<div class="col-lg-4 col-xs-12 text-center" id="summary">
 				<hr>
-				Cart: <span class="simpleCart_total"></span> ( <span
-					class="simpleCart_quantity"></span> items) <br /> Tax: <span
-					class="simpleCart_taxCost"></span> <br /> Shipping: <span
-					class="simpleCart_shippingCost"></span> <br /> SubTotal: <span
-					class="simpleCart_total"></span> <br /> Final Total: <span
-					class="simpleCart_finalTotal"></span> <br /> <br> <a
-					href="javascript:;" class="simpleCart_empty">Empty Cart</a><br>
+				Cart: <span class="simpleCart_total text-center"></span> ( <span
+					class="simpleCart_quantity"></span> items) <br />
+
+				<!-- 	 Tax: <span
+					class="simpleCart_taxCost"></span>
+ -->
+				<br /> Delivery: <span class="simpleCart_shippingCost text-center"></span>
+				<br />
+
+				<!-- 	SubTotal: <span
+					class="simpleCart_total"></span>
+				 -->
+
+				<br /> Final Total: <span class="simpleCart_finalTotal text-center"></span>
+				<br /> <br> <a href="javascript:;" class="simpleCart_empty">Empty
+					Cart</a><br>
 
 				<hr>
 
@@ -233,6 +289,9 @@ a,a:hover {
 
 		</div>
 	</div>
+
+	<div id='spinner' class='spinner'></div>
+
 
 	<div class="container">
 
@@ -252,9 +311,9 @@ a,a:hover {
 
 			<div class="col-lg-offset-4 col-lg-8 col-xs-12">
 
-				<button type="submit" id="button"
-					class="btn btn-primary btn-lg active col-lg-12 col-xs-12 bg"
-					id="search">Place My Order</button>
+				<button type="submit" id="orderbutton"
+					class="btn btn-primary btn-lg active col-lg-12 col-xs-12 bg">Place
+					My Order</button>
 
 			</div>
 
@@ -285,325 +344,83 @@ a,a:hover {
 
 	</div>
 
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 text-center bg">
+
+					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
+
+						<h4>Kasim Lane, Kaloor Kochi, India 682017</h4>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081"
+							frameborder="0" style="border: 0; margin-left: 10px;"></iframe>
+
+					</div>
+
+					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
+
+						<h4>
+							Phone: +917558943030, +919388803073<br> <a
+								href="mailto:easysmartfood@gmail.com"><u>easysmartfood@gmail.com</u></a>
+
+
+						</h4>
+					</div>
+
+					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
+						<ul class="list-inline">
+							<li><a href="https://www.facebook.com/easysmartfood"><i
+									class="fa fa-facebook fa-3x"></i></a></li>
+							<li><i class="fa fa-google-plus-square fa-3x"></i></li>
+
+						</ul>
+					</div>
+					<p>Copyright © Company 2014</p>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
 
 	<script src="js/bootstrap.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/checkout.js"></script>
 
 	<script>
-		var username;
-		var password;
-		var address1;
-		var address2;
-		var landmark;
-		var city;
-		var email;
-		var contactnumber;
+		var delete_cookie = function(name) {
+			document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		};
 
-		var userResponse;
-		var esfuuid;
-		var esfCookieValues;
+		var loggedin = getCookie('esfuuid');
 
-		var editAddrForm = '<form class="form-horizontal" role="form" id="usereditform" style="margin:50px;"><div class="form-group"><label for="inputPassword3" class="col-lg-4 control-label">Address1</label><div class="col-lg-6"><input type="text" class="form-control" placeholder="Address1" id="address1" name="address1"></div></div>'
-				+
+		if (loggedin != null) {
+			$('#loginmenu').append(
+					'<li><a href="/index.html" id="logout">Logout</a></li>');
 
-				'<div class="form-group">'
-				+ '<label for="inputPassword3" class="col-lg-4 control-label">Address2'
-				+ '</label>'
-				+ '<div class="col-lg-6">'
-				+ '<input type="text" class="form-control" placeholder="Address2"'+
-'id="address2" name="address2">'
-				+ '</div>'
-				+ '</div>'
-				+
+		} else {
 
-				'<div class="form-group">'
-				+ '<label for="inputPassword3" class="col-lg-4 control-label">Landmark'
-				+ '</label>'
-				+ '<div class="col-lg-6">'
-				+ '<input type="text" class="form-control" placeholder="Landmark"'+
-'id="landmark" name="landmark">'
-				+ '</div>'
-				+ '</div>'
-				+
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
 
-				'<div class="form-group">'
-				+ '<label for="inputPassword3" class="col-lg-4 control-label">City'
-				+ '</label>'
-				+ '<div class="col-lg-6">'
-				+ '<input type="text" class="form-control" placeholder="City"'+
-'id="city" name="city">'
-				+ '</div>'
-				+ '</div>'
-				+
-
-				'<div class="form-group">'
-				+ '<label for="inputPassword3" class="col-lg-4 control-label">Username/Email'
-				+ '</label>'
-				+ '<div class="col-lg-6">'
-				+ '<input type="text" class="form-control" placeholder="Email"'+
-'id="email" name="email">'
-				+ '</div>'
-				+ '</div>'
-				+
-
-				'<div class="form-group">'
-				+ '<label for="inputPassword3" class="col-lg-4 control-label">Phone'
-				+ '</label>'
-				+ '<div class="col-lg-6">'
-				+ '<input type="text" class="form-control" placeholder="Phone"'+
-'id="contactnumber" name="contactnumber">'
-				+ '</div>' + '</div>' + '</form>';
-
-		$(document)
-				.ready(
-						function() {
-
-							esfuuid = getCookie('esfuuid');
-							if (esfuuid != null) {
-
-								esfCookieValues = esfuuid.split('|');
-
-								bindUser();
-
-							} else {
-
-								$('div#shipmentdetails').html(editAddrForm);
-
-								$('#editaddressbutton').remove();
-
-							}
-
-							$('#signinbutton').on('click', function() {
-
-								console.log('sign in');
-
-								window.location = 'login.html';
-
-							});
-
-							$('#editaddressbutton')
-									.on(
-											'click',
-											function() {
-
-												var buttonText = $(
-														'#editaddressbutton')
-														.text();
-
-												if (buttonText == 'Change Delivery Address') {
-
-													$('div#shipmentdetails')
-															.html(editAddrForm);
-
-													if (esfuuid != null) {
-														$('#address1').val(
-																address1);
-														$('#address2').val(
-																address2);
-														$('#landmark').val(
-																landmark);
-														$('#city').val(city);
-														$('#email').val(email);
-														$('#contactnumber')
-																.val(
-																		contactnumber);
-
-														$('#editaddressbutton')
-																.text(
-																		'Update Delivery Address');
-
-													}
-												} else {
-
-													console
-															.log('inside else'
-																	+ getCookie('esfuuid'));
-
-													var updaddress1 = $(
-															'#address1').val();
-
-													var updaddress2 = $(
-															'#address2').val();
-
-													var updlandmark = $(
-															'#landmark').val();
-
-													console.log(updlandmark);
-
-													var updcity = $('#city')
-															.val();
-
-													var updemail = $('#email')
-															.val();
-
-													var updcontactnumber = $(
-															'#contactnumber')
-															.val();
-
-													var updatedUserData = new Profile(
-															updcontactnumber,
-															updemail,
-															updaddress1,
-															updaddress2,
-															updlandmark,
-															updcity);
-
-													var updateStrData = JSON
-															.stringify(updatedUserData);
-
-													console.log(updateStrData);
-													var response = $
-															.ajax(
-																	{
-																		type : "PUT",
-																		url : "http://easysmartfood.appspot.com/user?username="
-																				+ esfCookieValues[1]
-																				+ "&useruuid="
-																				+ esfCookieValues[0],
-																		data : updateStrData
-																	})
-															.fail(
-																	function(
-																			msg) {
-
-																		console
-																				.log('Error Occured');
-																	})
-															.done(
-																	function(
-																			msg) {
-
-																		console
-																				.log(response);
-
-																		var jqxhr = $
-																				.get(
-																						"https://easysmartfood.appspot.com/user?useruuid="
-																								+ esfCookieValues[0],
-																						function() {
-
-																						})
-																				.done(
-																						function() {
-
-																							userResponse = jqxhr.responseJSON;
-																							address1 = userResponse.address1;
-																							address2 = userResponse.address2;
-																							landmark = userResponse.landmark;
-																							city = userResponse.city;
-																							contactnumber = userResponse.contactnumber;
-																							email = userResponse.email;
-
-																							var afterUpdateHtml = '<div class="col-lg-6 col-xs-12" style="padding:50px;"><h4>'
-																									+ address1
-																									+ '</h4><h4>'
-																									+ address2
-																									+ '</h4><h4>'
-																									+ city
-																									+ '</h4><h4>'
-																									+ landmark
-																									+ '</h4></div><div class="col-lg-4 col-xs-12" style="padding:50px;"><h5>'
-																									+ email
-																									+ '</h5><h5>'
-																									+ contactnumber
-																									+ '</h5></div>';
-
-																							$(
-																									'div#shipmentdetails')
-																									.html(
-																											afterUpdateHtml);
-
-																							$(
-																									'#editaddressbutton')
-																									.text(
-																											'Change Delivery Address');
-
-																						})
-																				.fail(
-																						function() {
-																							alert("error");
-																						})
-																				.always(
-																						function() {
-																						});
-
-																	});
-
-												}
-
-											});
-
-							function Profile(contactnumber, email, address1,
-									address2, landmark, city) {
-
-								this.contactnumber = contactnumber;
-								this.email = email;
-								this.address1 = address1;
-								this.address2 = address2;
-								this.landmark = landmark;
-								this.city = city;
-
-							}
-
-							function bindUser() {
-
-								console.log(esfCookieValues[0]);
-
-								var jqxhr = $.get(
-										"https://easysmartfood.appspot.com/user?useruuid="
-												+ esfCookieValues[0],
-										function() {
-
-										}).done(function() {
-
-									userResponse = jqxhr.responseJSON;
-
-									var source = $("#shiptotemplate").html();
-
-									console.log(source);
-
-									var template = Handlebars.compile(source);
-									username = userResponse.username;
-									address1 = userResponse.address1;
-									address2 = userResponse.address2;
-									landmark = userResponse.landmark;
-									city = userResponse.city;
-									contactnumber = userResponse.contactnumber;
-									email = userResponse.email;
-
-									var html = template(userResponse);
-									console.log(html);
-
-									$('div#shipmentdetails').html(html);
-
-								}).fail(function() {
-									alert("error");
-								}).always(function() {
-								});
-							}
-
-						});
-
-		function getCookie(c_name) {
-			var c_value = document.cookie;
-			var c_start = c_value.indexOf(" " + c_name + "=");
-			if (c_start == -1) {
-				c_start = c_value.indexOf(c_name + "=");
-			}
-			if (c_start == -1) {
-				c_value = null;
-			} else {
-				c_start = c_value.indexOf("=", c_start) + 1;
-				var c_end = c_value.indexOf(";", c_start);
-				if (c_end == -1) {
-					c_end = c_value.length;
-				}
-				c_value = unescape(c_value.substring(c_start, c_end));
-			}
-			return c_value;
 		}
+
+		$('a[href="/index.html"]').click(function() {
+			delete_cookie('esfuuid');
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
+		});
 	</script>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49982128-1', 'easysmartfood.co.in');
+  ga('send', 'pageview');
+
+</script>
 </body>
 
 </html>

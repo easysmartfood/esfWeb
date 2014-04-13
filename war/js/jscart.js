@@ -26,6 +26,9 @@
  * SOFTWARE.
  ******************************************************************************/
 
+
+
+
 var NextId = 1, Custom = "Custom", GoogleCheckout = "GoogleCheckout", PayPal = "PayPal", Email = "Email", AustralianDollar = AUD = "AUD", CanadianDollar = CAD = "CAD", India = INR = "INR", CzechKoruna = CZK = "CZK", DanishKrone = DKK = "DKK", Euro = EUR = "EUR", HongKongDollar = HKD = "HKD", HungarianForint = HUF = "HUF", IsraeliNewSheqel = ILS = "ILS", JapaneseYen = JPY = "JPY", MexicanPeso = MXN = "MXN", NorwegianKrone = NOK = "NOK", NewZealandDollar = NZD = "NZD", PolishZloty = PLN = "PLN", PoundSterling = GBP = "GBP", SingaporeDollar = SGD = "SGD", SwedishKrona = SEK = "SEK", SwissFranc = CHF = "CHF", USDollar = USD = "USD";
 function Cart() {
 
@@ -132,6 +135,9 @@ function Cart() {
 				simpleCart.items = {};
 			}
 
+			
+	    	    
+	    	        
 			var me = this;
 			/* load cart values if not already loaded */
 			if (!me.pageIsReady) {
@@ -143,8 +149,8 @@ function Cart() {
 				me.update();
 			}
 
-			var newItem = new CartItem();
-
+	
+		
 			/* check to ensure arguments have been passed in */
 			if (!arguments || arguments.length === 0) {
 				error('No values passed for item.');
@@ -155,6 +161,9 @@ function Cart() {
 					&& typeof (arguments[0]) != 'number') {
 				argumentArray = arguments[0];
 			}
+			
+			var newItem = new CartItem();
+
 
 			newItem.parseValuesFromArray(argumentArray);
 			newItem.checkQuantityAndPrice();
@@ -170,7 +179,8 @@ function Cart() {
 			}
 
 			me.update();
-		}
+		
+				}
 	};
 
 	me.remove = function(id) {
@@ -818,15 +828,20 @@ CartItem.prototype.set = function(field, value) {
 
 CartItem.prototype.increment = function() {
 	this.quantity = parseInt(this.quantity, 10) + 1;
+	document.location.reload(true);
 	simpleCart.update();
 };
 
 CartItem.prototype.decrement = function() {
 	if (parseInt(this.quantity, 10) < 2) {
 		this.remove();
+		document.location.reload(true);
+
 	} else {
 		this.quantity = parseInt(this.quantity, 10) - 1;
 		simpleCart.update();
+		document.location.reload(true);
+
 	}
 };
 

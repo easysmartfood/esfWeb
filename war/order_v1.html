@@ -33,22 +33,44 @@
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
-	
-	
+
+
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
 <script type="text/javascript" src="js/jscart.js"></script>
 
 
+<script src="js/handlebars-v1.3.0.js"></script>
 
-
- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
- 
- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
- 
- <script src="js/handlebars-v1.3.0.js"></script>
-
+<script src="js/order.js"></script>
 
 
 <style>
+a{
+
+color:#000;
+}
+
+body {
+	background: url('');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center center;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+
+
 h4 {
 	color: white;
 }
@@ -114,9 +136,7 @@ span {
 	color: #000;
 }
 
-a,a:hover {
-	color: white;
-}
+
 
 .bg {
 	border-radius: 15px;
@@ -143,231 +163,6 @@ div#orderDetails {
 	margin-bottom: 30px;
 }
 </style>
-<script>
-
-
-		function FoodItems(foodCategoryArr){
-			this.foodArr = foodCategoryArr;
-			this.getFoodItems = getFoodItemsObj;
-			}
-		
-		function getFoodItemsObj(){
-			var obj = {'foodItems':this.foodArr};
-			return obj;
-		}
-		
-		
-		var deliveryCost = 'NA';
-		
-		var deliveryDistance = 'NA';
-		
-		
-		
-	$(document).ready(
-			
-		
-			function() {
-
-				var query = window.location.search;
-				var qryParam = query.split('=');
-								
-				var days = 30;
-				var date = new Date();
-				date.setTime(date.getTime()
-						+ (days * 24 * 60 * 60 * 1000));
-				var expires = "; expires="
-						+ date.toGMTString();
-
-				var ruuid = qryParam[1].substring(0,36)
-				if(ruuid != null){
-				document.cookie = 'esfrestuid_url'+"="
-						+ ruuid +expires;
-
-				}
-				var referringURL = document.referrer;
-				
-				var restName = getCookie('esfrestname');
-				
-				var region = getCookie('esfrestregion');
-				
-				var url = 'http://easysmartfood.appspot.com/getdeliverycharge?restaurantname='
-					+restName+'&userregion='+region;
-				
-				var deliveryDtls = $.getJSON(
-						"http://easysmartfood.appspot.com/getdeliverycharge?restaurantname="
-								+restName+'&userregion='+region, function() {
-							
-							
-									var deliveryHtml = $('#deliverycost').html();
-									var template = Handlebars.compile(deliveryHtml);
-
-									var html = template(deliveryDtls.responseJSON);
-									
-									$('div#restaurantDetails').append(html);
-
-							
-							
-													
-						}).done(function() {
-							
-							console.log('done');
-							
-						}).fail(function() {
-						
-							console.log("delivery cost"+JSON.stringify(deliveryDtls));
-						});
-				
-			
-				var jqxhr = $
-						.getJSON(
-								"http://1.easysmartfood.appspot.com/restaurant"
-										+ query, function() {
-									console.log("success");
-								}).done(function() {
-
-							
-							var restArr = jqxhr.responseJSON;
-
-							var source = $("#foodmenuTemplate").html();
-							var template = Handlebars.compile(source);
-							
-
-							var html = template(restArr[0]);
-							
-							$('div#restaurantDetails').append(html);
-
-							var restImg = $("#resturantImgTemplate").html();
-							var restImgTemplate = Handlebars.compile(restImg);
-
-							var html = restImgTemplate(restArr);
-							$('div#restaurantImg').html(html);
-
-						}).fail(function() {
-							console.log("error");
-						}).always(function() {
-							console.log("complete");
-						});
-
-						var foodItemReq = $.getJSON(
-						"http://1.easysmartfood.appspot.com/fooditems/restaurant"
-								+ query, function() {
-							console.log("success");
-						}).done(function() {
-
-					<!-- test binding -->
-					
-					var nonVegArr = new Array();
-					var vegArr = new Array();
-					var popularArr = new Array();
-					var beverageArr = new Array();
-					
-					var foodItems = foodItemReq.responseJSON.foodItems;
-
-					console.log("Food Items: "+foodItems.length);
-
-					for ( var k = 0; k < foodItems.length; k++) {
-
-						var tempFoodItemObj = foodItems[k];
-						
-						var tempFoodCategory = tempFoodItemObj.foodCategory;
-						
-						if((tempFoodCategory == 'Non Veg' || tempFoodCategory == 'Veg' || tempFoodCategory == 'Beverages') && tempFoodItemObj.popular == 'Yes'){
-							popularArr.push(tempFoodItemObj);
-							console.log(popularArr);
-						}
-						if(tempFoodCategory == 'Non Veg'){
-							nonVegArr.push(tempFoodItemObj);
-						}else if(tempFoodCategory == 'Veg'){
-							vegArr.push(tempFoodItemObj);
-						}else if(tempFoodCategory == 'Beverages'){
-							beverageArr.push(tempFoodItemObj);
-						}
-					
-					}
-					
-						var popularFood = new FoodItems(popularArr);
-						var vegFood = new FoodItems(vegArr);
-						var nonVegFood = new FoodItems(nonVegArr);
-						var beverage = new FoodItems(beverageArr);
-						
-						var foodSource = $("#foodMenu").html();
-						var vegSource = $('#vegMenu').html();
-						var nonVegSource = $('#nonVegMenu').html();
-						var beverageSource = $('#beverageMenu').html();
-					
-					try {
-						
-						var foodTemplate = Handlebars.compile(foodSource);
-						var popularHtml = foodTemplate(popularFood.getFoodItems());
-						
-						console.log(popularHtml);
-						
-						var vegTemplate = Handlebars.compile(vegSource);
-						var vegHtml = vegTemplate(vegFood.getFoodItems());
-						
-						var nonVegTemplate = Handlebars.compile(nonVegSource);
-						var nonVegHtml = nonVegTemplate(nonVegFood.getFoodItems());
-				
-						var beverageTemplate = Handlebars.compile(beverageSource);
-						var beverageHtml = beverageTemplate(beverage.getFoodItems());
-				
-						
-						
-					} catch (err) {
-						console.log('Handle Bars' + err);
-					}
-					
-				$('div#home').html(popularHtml);
-				$('div#profile').html(vegHtml);
-				$('div#nv').html(nonVegHtml);
-				$('div#beverages').html(beverageHtml);
-				
-				}).fail(function(err) {
-					console.log("error" + err);
-				}).always(function() {
-					console.log("complete");
-				});
-
-				
-						var esfuuid = getCookie('esfuuid');
-						var esfCookieValues;
-						if (esfuuid != null) {
-							esfCookieValues = esfuuid.split('|');
-
-						}else{
-							
-							$('#checkoutbutton').text('Guest Checkout');
-							
-							$('#checkoutsection').append('<a href="login.html" class="col-lg-12 col-xs-12" id="search"><h3 class="text-center">Login ?</h3></a>');
-							
-							
-							
-						}
-
-			});
-	
-	
-	
-	function getCookie(c_name) {
-		var c_value = document.cookie;
-		var c_start = c_value.indexOf(" " + c_name + "=");
-		if (c_start == -1) {
-			c_start = c_value.indexOf(c_name + "=");
-		}
-		if (c_start == -1) {
-			c_value = null;
-		} else {
-			c_start = c_value.indexOf("=", c_start) + 1;
-			var c_end = c_value.indexOf(";", c_start);
-			if (c_end == -1) {
-				c_end = c_value.length;
-			}
-			c_value = unescape(c_value.substring(c_start, c_end));
-		}
-		return c_value;
-	}
-</script>
-
 
 
 </head>
@@ -383,7 +178,7 @@ div#orderDetails {
 						class="icon-bar"> </span>
 				</button>
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-				<a class="navbar-brand logo-nav" href="index.php"> <img
+				<a class="navbar-brand logo-nav" href="index.html"> <img
 					src="images/FINAL_image1.png" class=""
 					style="width: 150px; height: 75px;">
 				</a>
@@ -391,14 +186,14 @@ div#orderDetails {
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" class="btn btn-primary"
-							data-toggle="modal" data-target="#myModal">How it Works?</button></li>
-					<li><a
-						href="http://1.easysmartfood3.appspot.com/restaurantui.html">Restaurants</a>
+				<ul class="nav navbar-nav navbar-right" id="loginmenu">
+					<li><a href="#" data-toggle="modal" data-target="#myModal">How
+							it Works?</a></li>
+					<li><button type="button" class="btn btn-primary">
+							<a href="/restaurantui.html">Restaurants</a>
+						</button>
 					<li><a href="/profile.html">Create Account</a></li>
 
-					<li><a href="/login.html">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -414,20 +209,14 @@ div#orderDetails {
 			<div class="col-lg-4 col-xs-6 col-sm-6" id="restaurantImg">
 				<script id="resturantImgTemplate" type="text/x-handlebars-template">
 				<img
-					src="{{thumbnailImage}}" />
+					src={{thumbnailImage}} style="width: 150px; height:120px;margin:5px;">
 				</script>
 			</div>
 
 
 
 			<div class="col-lg-8 col-xs-6 col-sm-6" id="restaurantDetails">
-				<script id="deliverycost" type="text/x-handlebars-template">
 
-				<div class="col-lg-4">
-				<h4>DeliveryCost : {{deliveryCost}}</h4>
-
-			</div>
-			</script>
 				<script id="foodmenuTemplate" type="text/x-handlebars-template">
 
 			<div class="col-lg-4">
@@ -495,8 +284,10 @@ div#orderDetails {
 						<script id="foodMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 2px; line-height:1.9; margin-left: 5px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
-					</ul>
+					
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" name="item" disabled class="item_quantity" value="1" style="width: 30px; border-radius: 2px; line-height:1.9; margin-left: 5px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/></p></li>{{/each}}
+					
+</ul>
 
 					</script>
 
@@ -508,7 +299,7 @@ div#orderDetails {
 						<script id="vegMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" name="item" disabled class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/></p></li>{{/each}}
 					</ul>
 
 					</script>
@@ -521,7 +312,7 @@ div#orderDetails {
 						<script id="nonVegMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" name="item" disabled class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/></p></li>{{/each}}
 					</ul>
 
 					</script>
@@ -534,7 +325,7 @@ div#orderDetails {
 						<script id="beverageMenu" type="text/x-handlebars-template">
 					<ul class="list">					
 					{{#each foodItems}} 
-					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-6  col-xs-12">{{name}}</h4><p class="col-lg-2 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-2 col-xs-4"><input type="text" class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="item_add btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','size=Default','quantity=1','thumb=images/e.png');"/></p></li>{{/each}}
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-6  col-xs-12">{{name}}</h4><p class="col-lg-2 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-2 col-xs-4"><input type="text" name="item" disabled class="item_quantity" value="1" style="width: 30px; border-radius: 3px; margin-left: 10px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/></p></li>{{/each}}
 					</ul>
 
 					</script>
@@ -653,9 +444,9 @@ div#orderDetails {
 						</h4>
 					</div>
 
-					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
+					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%;color:white;">
 						<ul class="list-inline">
-							<li><a href="https://www.facebook.com/easysmartfood"><i
+							<li><a href="https://www.facebook.com/easysmartfood" style="color:white;"><i
 									class="fa fa-facebook fa-3x"></i></a></li>
 							<li><i class="fa fa-google-plus-square fa-3x"></i></li>
 
@@ -672,15 +463,46 @@ div#orderDetails {
 	<script src="js/bootstrap.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-	
-	$('#myTab a').click(function (e) {
-		  e.preventDefault();
-		  console.log('test');
-		  $(this).tab('show');
+		$('#myTab a').click(function(e) {
+			e.preventDefault();
+			console.log('test');
+			$(this).tab('show');
 		});
-		
 	</script>
 
+	<script>
+		var delete_cookie = function(name) {
+			document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		};
+
+		var loggedin = getCookie('esfuuid');
+		console.log('Logged in: ' + loggedin);
+		if (loggedin != null) {
+			$('#loginmenu').append(
+					'<li><a href="/index.html" id="logout">Logout</a></li>');
+
+		} else {
+
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
+
+		}
+
+		$('a[href="/index.html"]').click(function() {
+			delete_cookie('esfuuid');
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
+		});
+	</script>
+	
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49982128-1', 'easysmartfood.co.in');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 

@@ -3985,13 +3985,15 @@ border-top-left-radius
 
 .nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus
 	{
-	/* padding: 5px; */
+	padding: 5px;
+	margin-bottom: 10px;
 	/* color: #000000; */
 	cursor: default;
-	/* background-color: #ffffff; */
-	/* border: 2px solid #526907; */
+	background-color: #ffffff;
+	border: 2px solid #526907;
+	border-radius: 5px;
 	margin-left: 20px;
-	/* border-bottom-color: transparent; */
+	border-bottom-color: transparent;
 	font-size: large;
 }
 

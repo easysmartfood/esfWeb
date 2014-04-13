@@ -143,7 +143,7 @@ form#profileform {
 						class="icon-bar"> </span>
 				</button>
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-				<a class="navbar-brand logo-nav" href="index.php"> <img
+				<a class="navbar-brand logo-nav" href="index.html"> <img
 					src="images/FINAL_image1.png" class=""
 					style="width: 150px; height: 75px;">
 				</a>
@@ -151,17 +151,15 @@ form#profileform {
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" class="btn btn-primary"
-							data-toggle="modal" data-target="#myModal">How it Works?</button></li>
 
-
-
-					<li><a
-						href="http://1.easysmartfood3.appspot.com/restaurantui.html">Restaurants</a>
+				<ul class="nav navbar-nav navbar-right" id="loginmenu">
+					<li><a href="#" data-toggle="modal" data-target="#myModal">How
+							it Works?</a></li>
+					<li><button type="button" class="btn btn-primary">
+							<a href="/restaurantui.html">Restaurants</a>
+						</button>
 					<li><a href="/profile.html">Create Account</a></li>
 
-					<li><a href="/login.html">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -233,6 +231,14 @@ form#profileform {
 						</div>
 					</div>
 
+					<div class="form-group">
+						<label for="inputPassword3" class="col-lg-6 control-label">Company
+							Name</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" placeholder="Company"
+								id="company" name="company">
+						</div>
+					</div>
 
 					<div class="form-group">
 						<label for="inputPassword3" class="col-lg-6 control-label">Full
@@ -242,6 +248,8 @@ form#profileform {
 								id="fullname" name="fullname">
 						</div>
 					</div>
+
+
 
 
 					<div class="form-group">
@@ -275,7 +283,7 @@ form#profileform {
 						<label for="inputPassword3" class="col-lg-6 control-label">City</label>
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="City"
-								id="city" name="city">
+								id="city" disabled value="Kochi" name="city">
 						</div>
 					</div>
 
@@ -384,8 +392,9 @@ form#profileform {
 	</script>
  -->
 
- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
- 
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 
 	<script
 		src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min.js"></script>
@@ -406,8 +415,8 @@ form#profileform {
 												rules : {
 
 													username : {
-														required : true,
-														email : true
+														required : true
+														
 													},
 													fullname : {
 														required : true
@@ -419,7 +428,8 @@ form#profileform {
 													contactnumber : {
 														required : true
 
-													},email:{
+													},
+													email : {
 														required : true,
 														email : true
 													}
@@ -450,15 +460,19 @@ form#profileform {
 								var fullname = $('#fullname').val();
 								var contactnumber = $('#contactnumber').val();
 								var email = $('#email').val();
+								var region = $('#regselector').val();
 								var address1 = $('#address1').val();
 								var address2 = $('#address2').val();
 								var landmark = $('#landmark').val();
 								var city = $('#city').val();
 								var zip = $('#zip').val();
+								var company = $('#company').val();
 
 								var profileObj = new Profile(username,
 										password, fullname, contactnumber,
-										email,address1, address2, landmark, city, zip);
+										email, region, address1, address2,
+										landmark, city, zip, company);
+
 								console.log(profileObj);
 								var userdata = JSON.stringify(profileObj);
 
@@ -472,11 +486,48 @@ form#profileform {
 										.done(
 												function() {
 
-													$('#userregistration')
-															.html(
-																	'<h3>Thank You. Your Account has been created Successfully.</h3>');
+													var responseuuid = jqxhr.responseJSON.useruuid;
 
-													window.location = '/redesign_v1.html';
+													var jqxhr1 = $.get(
+															"https://easysmartfood.appspot.com/user?useruuid="+responseuuid,
+															 function() {
+
+															})
+													.done(
+															function() {
+
+																var days = 30;
+
+																var userResponse = jqxhr1.responseJSON;
+
+																var date = new Date();
+																date
+																		.setTime(date
+																				.getTime()
+																				+ (days * 24 * 60 * 60 * 1000));
+																var expires = "; expires="
+																		+ date
+																				.toGMTString();
+
+																document.cookie = 'esfuuid'
+																		+ "="
+																		+ userResponse.useruuid
+																		+ '|'
+																		+ userResponse.username
+																		+ '|'
+																		+ userResponse.region
+																		+ expires;
+																
+																
+																$('#userregistration')
+																.html(
+																		'<h3>Thank You. Your Account has been created Successfully.</h3>');
+
+														window.location = '/index.html';
+															});
+												
+													
+												
 
 												})
 										.fail(
@@ -484,7 +535,7 @@ form#profileform {
 
 													$('#loginheader')
 															.text(
-																	'Failed to Create Account :(');
+																	'Failed to Create Account :');
 
 												}).always(function() {
 
@@ -493,18 +544,20 @@ form#profileform {
 							}
 
 							function Profile(username, password, fullname,
-									contactnumber, email, address1, address2,
-									landmark, city, zip) {
+									contactnumber, email, region, address1,
+									address2, landmark, city, zip, company) {
 								this.username = username;
 								this.password = password;
 								this.fullname = fullname;
 								this.contactnumber = contactnumber;
 								this.email = email;
+								this.region = region;
 								this.address1 = address1;
 								this.address2 = address2;
 								this.landmark = landmark;
 								this.city = city;
 								this.zip = zip;
+								this.company = company;
 
 							}
 
@@ -516,6 +569,11 @@ form#profileform {
 
 												var regionArr = jqxhr.responseJSON;
 
+												$("#regselector")
+												.append(
+														'<option value="'+ 'Please Select'+'">'
+																+ 'Select Your Region'
+																+ '</option>')
 												for ( var regIndex = 0; regIndex < regionArr.length; regIndex++) {
 
 													var obj = regionArr[regIndex];
@@ -539,6 +597,58 @@ form#profileform {
 						});
 	</script>
 
+	<script>
+		var delete_cookie = function(name) {
+			document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		};
+
+		var loggedin = getCookie('esfuuid');
+
+		if (loggedin != null) {
+			$('#loginmenu').append(
+					'<li><a href="/index.html" id="logout">Logout</a></li>');
+
+		} else {
+
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
+
+		}
+
+		$('a[href="/index.html"]').click(function() {
+			delete_cookie('esfuuid');
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
+		});
+
+		function getCookie(c_name) {
+			var c_value = document.cookie;
+			var c_start = c_value.indexOf(" " + c_name + "=");
+			if (c_start == -1) {
+				c_start = c_value.indexOf(c_name + "=");
+			}
+			if (c_start == -1) {
+				c_value = null;
+			} else {
+				c_start = c_value.indexOf("=", c_start) + 1;
+				var c_end = c_value.indexOf(";", c_start);
+				if (c_end == -1) {
+					c_end = c_value.length;
+				}
+				c_value = unescape(c_value.substring(c_start, c_end));
+			}
+			return c_value;
+		}
+	</script>
+	
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49982128-1', 'easysmartfood.co.in');
+  ga('send', 'pageview');
+
+</script>
 </body>
 
 </html>

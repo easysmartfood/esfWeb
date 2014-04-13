@@ -142,18 +142,19 @@ a:hover {
 						class="icon-bar"> </span>
 				</button>
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-				<a class="navbar-brand logo-nav" href="index.php"> <img
+				<a class="navbar-brand logo-nav" href="index.html"> <img
 					src="images/FINAL_image1.png">
 				</a>
 			</div>
 
+			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" class="btn btn-primary"
-							data-toggle="modal" data-target="#myModal">How it Works?</button></li>
-
-					<li><a
-						href="http://1.easysmartfood3.appspot.com/restaurantui.html">Restaurants</a>
+					<li><a href="#" data-toggle="modal" data-target="#myModal">How
+							it Works?</a></li>
+					<li><button type="button" class="btn btn-primary">
+							<a href="/restaurantui.html">Restaurants</a>
+						</button>
 					<li><a href="/profile.html">Create Account</a></li>
 
 					<li><a href="/login.html">Login</a></li>
@@ -190,8 +191,8 @@ a:hover {
 						<label for="inputPassword3" class="col-lg-6 control-label">Password
 						</label>
 						<div class="col-lg-6">
-							<input type="text" class="form-control" placeholder="Password"
-								id="password" name="password">
+							<input type="password" class="form-control"
+								placeholder="Password" id="password" name="password">
 						</div>
 					</div>
 
@@ -407,6 +408,8 @@ a:hover {
 															+ userResponse.useruuid
 															+ '|'
 															+ userResponse.username
+															+ '|'
+															+ userResponse.region
 															+ expires;
 
 													var referringURL = document.referrer;
@@ -434,7 +437,7 @@ a:hover {
 
 													} else {
 
-														window.location = "/redesign_v1.html";
+														window.location = "/index.html";
 													}
 												}).fail(
 												function() {
@@ -480,7 +483,39 @@ a:hover {
 			return c_value;
 		}
 	</script>
+	<script>
+		var delete_cookie = function(name) {
+			document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		};
 
+		var loggedin = getCookie('esfuuid');
+
+		if (loggedin != null) {
+			$('#loginmenu').append(
+					'<li><a href="/index.html" id="logout">Logout</a></li>');
+
+		} else {
+
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
+
+		}
+
+		$('a[href="/index.html"]').click(function() {
+			delete_cookie('esfuuid');
+			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
+		});
+	</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49982128-1', 'easysmartfood.co.in');
+  ga('send', 'pageview');
+
+</script>
 </body>
 
 </html>
