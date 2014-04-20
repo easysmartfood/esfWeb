@@ -29,7 +29,6 @@
 			
 				var query = window.location.search;
 				var qryParam = query.split('=');
-				console.log(qryParam);	
 				
 				
 				var ruuid = getParameterByName('restaurantuuid');
@@ -75,7 +74,6 @@
 							
 							var restArr = jqxhr.responseJSON;
 
-							console.log(restArr);
 							var source = $("#foodmenuTemplate").html();
 							var template = Handlebars.compile(source);
 							
@@ -89,7 +87,6 @@
 							var restImgTemplate = Handlebars.compile(restImg);
 
 							var html = restImgTemplate(restArr[0]);
-							console.log('IMAGE: '+html);
 							$('div#restaurantImg').html(html);
 
 						}).fail(function() {
@@ -113,7 +110,6 @@
 					
 					var foodItems = foodItemReq.responseJSON.foodItems;
 
-					console.log("Food Items: "+foodItems.length);
 
 					for ( var k = 0; k < foodItems.length; k++) {
 

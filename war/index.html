@@ -521,7 +521,6 @@ a:hover {
 
 												var selectedRestaurant = $(this)
 														.text();
-												console.log(selectedRestaurant);
 
 												$(this)
 														.parents(
@@ -537,15 +536,12 @@ a:hover {
 																"http://1.easysmartfood.appspot.com/restaurant?"
 																		+ selectedRestaurant,
 																function() {
-																	console
-																			.log("success");
+																
+																	
 																})
 														.done(
 																function() {
-																	console
-																			.log("second success"
-																					+ jqxhr);
-
+																
 																	var restArr = jqxhr.responseJSON;
 																	var restName = [];
 																	var restMapping = {};
@@ -554,8 +550,7 @@ a:hover {
 																		restName[k] = restArr[k].name
 																				+ '    --     '
 																				+ restArr[k].region;
-																		console
-																				.log(restName[k]);
+																	
 																		restMapping[restName[k]] = restArr[k].uuid
 																				+ '|'
 																				+ restArr[k].name
@@ -630,7 +625,7 @@ a:hover {
 			var restaurant = $('#searchRestaurant').val();
 			if (restaurant == '') {
 
-				window.location = 'http://localhost:8888/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor';
+				window.location = 'http://easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor';
 
 			} else {
 
@@ -659,11 +654,9 @@ a:hover {
 					.getJSON(
 							"http://1.easysmartfood.appspot.com/restaurant?"
 									+ selectedRestaurant, function() {
-								console.log("success");
 							})
 					.done(
 							function() {
-								console.log("second success" + jqxhr);
 
 								var restArr = jqxhr.responseJSON;
 								var restName = [];
@@ -710,7 +703,6 @@ a:hover {
 
 						console.log("error");
 					}).always(function() {
-						console.log("complete");
 					});
 
 		}
@@ -738,17 +730,23 @@ a:hover {
 			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
 		});
 	</script>
-	
+
 	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-49982128-1', 'easysmartfood.co.in');
-  ga('send', 'pageview');
-
-</script>
+		ga('create', 'UA-49982128-1', 'easysmartfood.co.in');
+		ga('send', 'pageview');
+	</script>
 </body>
 
 </html>

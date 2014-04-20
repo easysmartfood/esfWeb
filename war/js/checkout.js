@@ -16,6 +16,7 @@ var opts = {
 	top : '50%', // Top position relative to parent in px
 	left : '50%' // Left position relative to parent in px
 };
+
 var spinner = null;
 var spinner_div = 0;
 
@@ -31,13 +32,16 @@ var contactnumber;
 var region;
 var deliveryCost;
 var company;
+var fullname;
 
 var userResponse;
 var esfuuid;
 var esfCookieValues;
 var regionArr;
+
+var foodArr = new Array();
+
 var jqxhr = $.getJSON("http://easysmartfood.appspot.com/region", function() {
-	console.log("success" + jqxhr);
 
 	regionArr = jqxhr.responseJSON;
 
@@ -47,23 +51,18 @@ var jqxhr = $.getJSON("http://easysmartfood.appspot.com/region", function() {
 
 }).fail(function() {
 	console.log("error");
-}).always(function() {
-	console.log("complete");
 });
 
 function calculateDeliveryCost(restName, region) {
 	var url = 'http://easysmartfood.appspot.com/getdeliverycharge?restaurantname='
 			+ restName + '&userregion=' + region;
 
-	console.log(url);
 	var deliveryDtls = $.getJSON(url, function() {
 
 	}).done(
 			function() {
 
 				var totalStr = $('.simpleCart_total').text();
-
-				console.log('Total: ' + totalStr);
 
 				if (deliveryDtls.responseJSON.deliveryCost != '') {
 
@@ -86,12 +85,9 @@ function calculateDeliveryCost(restName, region) {
 
 				deliveryCost = parseFloat(deliveryCost);
 
-				console.log('Delivery COST' + deliveryCost);
-
 				var totalCost = deliveryCost + totalStr;
 
 				$('.simpleCart_finalTotal').text(totalCost);
-				console.log('done');
 
 			}).fail(function() {
 
@@ -107,7 +103,7 @@ function populateRegions() {
 	for ( var regIndex = 0; regIndex < regionArr.length; regIndex++) {
 
 		var obj = regionArr[regIndex];
-		console.log(obj.region);
+
 		$("#regselector").append(
 				'<option value="' + obj.region + '">' + obj.region
 						+ '</option>')
@@ -115,10 +111,16 @@ function populateRegions() {
 	}
 
 }
-var editAddrForm = '<form class="form-horizontal" role="form" id="usereditform" style="margin:50px;"><div class="form-group"><label for="inputPassword3" class="col-lg-4 control-label">Address1</label><div class="col-lg-6"><input type="text" class="form-control" placeholder="Address1" id="address1" name="address1"></div></div>'
-		+
+var editAddrForm = '<form class="form-horizontal" role="form" id="usereditform" style="margin:50px;">'
 
-		'<div class="form-group">'
+		+ '<div class="form-group">'
+		+ '<label for="inputPassword3" class="col-lg-4 control-label">Full Name</label>'
+		+ '<div class="col-lg-6">'
+		+ '<input type="text" class="form-control" placeholder="Full name" id="fullname" name="fullname">'
+		+ '</div>'
+		+ '</div>'
+
+		+ '<div class="form-group">'
 		+ '<label for="inputPassword3" class="col-lg-4 control-label">Region'
 		+ '</label>'
 		+ '<div class="col-lg-6">'
@@ -130,6 +132,9 @@ var editAddrForm = '<form class="form-horizontal" role="form" id="usereditform" 
 		'</select>'
 		+ '</div>'
 		+ '</div>'
+
+		+ '<div class="form-group"><label for="inputPassword3" class="col-lg-4 control-label">Address1</label><div class="col-lg-6"><input type="text" class="form-control" placeholder="Address1" id="address1" name="address1"></div></div>'
+
 		+
 
 		'<div class="form-group">'
@@ -163,7 +168,7 @@ var editAddrForm = '<form class="form-horizontal" role="form" id="usereditform" 
 		+
 
 		'<div class="form-group">'
-		+ '<label for="inputPassword3" class="col-lg-4 control-label">Username/Email'
+		+ '<label for="inputPassword3" class="col-lg-4 control-label">Email'
 		+ '</label>'
 		+ '<div class="col-lg-6">'
 		+ '<input type="text" class="form-control" placeholder="Email"'
@@ -181,19 +186,14 @@ var editAddrForm = '<form class="form-horizontal" role="form" id="usereditform" 
 		+ '</div>'
 		+ '</div>'
 
-		+ ' <script>$("#regselector").change(function() {var restname = getCookie(\'esfrestname\');console.log(restname);var region = $(\'#regselector\').val();console.log(region);calculateDeliveryCost(restname,region);});</script>'
+		+ ' <script>$("#regselector").change(function() {var restname = getCookie(\'esfrestname\');var region = $(\'#regselector\').val();calculateDeliveryCost(restname,region);});</script>'
 		+ '</form>';
-
-$("#regselector").change(function() {
-
-	console.log('Value changed');
-
-});
 
 $(document)
 		.ready(
 				function() {
 
+					// check if the user is logged in
 					esfuuid = getCookie('esfuuid');
 					if (esfuuid != null) {
 
@@ -204,7 +204,7 @@ $(document)
 					} else {
 
 						$('div#shipmentdetails').html(editAddrForm);
-
+						// Not needed for guest checkout
 						$('#editaddressbutton').remove();
 
 					}
@@ -220,36 +220,15 @@ $(document)
 
 					}
 
-					$('#signinbutton').on('click', function() {
-
-						console.log('sign in');
-
-						window.location = 'login.html';
-
-					});
-
-					var foodArr = new Array();
 					$('#orderbutton')
 							.on(
 									'click',
 									function() {
 
-										spinner_div = $('#spinner').get(0);
-
-										console.log(spinner_div);
-
-										if (spinner == null) {
-											spinner = new Spinner(opts)
-													.spin(spinner_div);
-										} else {
-											spinner.spin(spinner_div);
-										}
-
 										var data = unescape(
 												getCookie('simpleCart')).split(
 												'++');
 
-										console.log(data);
 										for ( var x = 0, xlen = data.length; x < xlen; x++) {
 
 											var custOrder = data[x].split('||');
@@ -271,6 +250,7 @@ $(document)
 										esfuuid = getCookie('esfuuid');
 
 										var createdBy = 'guest';
+
 										if (esfuuid != null) {
 
 											userResponse.userType = 'login';
@@ -281,12 +261,13 @@ $(document)
 										} else {
 
 											userResponse = new UserResponse();
+											userResponse.fullname = $(
+													'#fullname').val();
 											userResponse.username = 'guest';
 											userResponse.password = 'NA';
 											userResponse.uuid = 'NA';
 											userResponse.createDate = new Date();
 											userResponse.updateDate = new Date();
-											userResponse.fullname = '';
 											userResponse.contactnumber = $(
 													'#contactnumber').val();
 											userResponse.email = $('#email')
@@ -304,9 +285,27 @@ $(document)
 											userResponse.foodComments = $(
 													'#foodcomments').val();
 
-											console
-													.log('USER Response: '
-															+ userResponse.foodComments);
+											$('#city').val('Kochi');
+											$("#city").attr("disabled",
+													"disabled");
+
+											var email = $('#email').val();
+
+											var contactnumber = $(
+													'#contactnumber').val()
+
+											var address1 = $('#address1').val();
+
+											var fullname = $('#fullname').val();
+
+											var result = validateInputs(
+													fullname, email,
+													contactnumber, address1);
+
+											if (!result) {
+
+												return;
+											}
 
 										}
 
@@ -333,6 +332,7 @@ $(document)
 												'0.0', '0.0', '0',
 												deliveryCost, '0.0', totalCost,
 												'Rs');
+
 										userResponse.foodComments = $(
 												'#foodcomments').val();
 
@@ -347,7 +347,14 @@ $(document)
 										orderStrData = JSON
 												.stringify(orderData);
 
-										console.log(orderStrData);
+										spinner_div = $('#spinner').get(0);
+
+										if (spinner == null) {
+											spinner = new Spinner(opts)
+													.spin(spinner_div);
+										} else {
+											spinner.spin(spinner_div);
+										}
 
 										var response = $
 												.ajax(
@@ -359,7 +366,6 @@ $(document)
 												.fail(
 														function(msg) {
 
-															console.log(msg);
 															$(
 																	'#confirmationheader')
 																	.text(
@@ -372,20 +378,49 @@ $(document)
 												.done(
 														function(msg) {
 
-															console
-																	.log('order Created'
-																			+ msg);
-
 															simpleCart.cartHeaders = [
 																	"Name",
 																	"Price",
 																	"Quantity",
 																	"Total" ];
 
+															username = userResponse.username;
+															fullname = userResponse.fullname;
+															region = userResponse.region;
+															address1 = userResponse.address1;
+															address2 = userResponse.address2;
+															landmark = userResponse.landmark;
+															city = userResponse.city;
+															contactnumber = userResponse.contactnumber;
+															email = userResponse.email;
+															company = userResponse.company;
+
+															var afterUpdateHtml = '<div class="col-lg-6 col-xs-12" style="padding:50px;"><h4>'
+																	+ fullname
+																	+ '</h4><h4>'
+																	+ address1
+																	+ '</h4><h4>'
+																	+ address2
+																	+ '</h4><h4>'
+																	+ city
+																	+ '</h4><h4>'
+																	+ landmark
+																	+ '</h4></div><div class="col-lg-4 col-xs-12" style="padding:50px;"><h5>'
+																	+ email
+																	+ '</h5><h5>'
+																	+ contactnumber
+																	+ '</h5></div>';
+
+															$(
+																	'div#shipmentdetails')
+																	.html(
+																			afterUpdateHtml);
+
 															$(
 																	'#confirmationheader')
 																	.text(
-																			'Your Order has been Successfully Created.');
+																			'Your Order has been Successfully Created. Order Number :'
+																					+ msg.orderNumber);
 
 															$(
 																	'#foodconfirmationheader')
@@ -423,6 +458,7 @@ $(document)
 													editAddrForm);
 
 											if (esfuuid != null) {
+												$('#fullname').val(fullname);
 												$('#address1').val(address1);
 												$('#address2').val(address2);
 												$('#landmark').val(landmark);
@@ -440,9 +476,6 @@ $(document)
 											}
 										} else {
 
-											console.log('inside else'
-													+ getCookie('esfuuid'));
-
 											var updaddress1 = $('#address1')
 													.val();
 
@@ -451,8 +484,6 @@ $(document)
 
 											var updlandmark = $('#landmark')
 													.val();
-
-											console.log(updlandmark);
 
 											var updcity = $('#city').val();
 
@@ -469,83 +500,9 @@ $(document)
 											var updateStrData = JSON
 													.stringify(updatedUserData);
 
-											console.log(updateStrData);
-											var response = $
-													.ajax(
-															{
-																type : "PUT",
-																url : "http://easysmartfood.appspot.com/user?username="
-																		+ esfCookieValues[1]
-																		+ "&useruuid="
-																		+ esfCookieValues[0],
-																data : updateStrData
-															})
-													.fail(
-															function(msg) {
-
-																console
-																		.log('Error Occured');
-															})
-													.done(
-															function(msg) {
-
-																console
-																		.log(response);
-
-																var jqxhr = $
-																		.get(
-																				"https://easysmartfood.appspot.com/user?useruuid="
-																						+ esfCookieValues[0],
-																				function() {
-
-																				})
-																		.done(
-																				function() {
-
-																					userResponse = jqxhr.responseJSON;
-																					address1 = userResponse.address1;
-																					address2 = userResponse.address2;
-																					region = userResponse.region;
-																					landmark = userResponse.landmark;
-																					city = userResponse.city;
-																					contactnumber = userResponse.contactnumber;
-																					email = userResponse.email;
-																					company = userResponse.company
-
-																					var afterUpdateHtml = '<div class="col-lg-6 col-xs-12" style="padding:50px;"><h4>'
-																							+ address1
-																							+ '</h4><h4>'
-																							+ address2
-																							+ '</h4><h4>'
-																							+ city
-																							+ '</h4><h4>'
-																							+ landmark
-																							+ '</h4></div><div class="col-lg-4 col-xs-12" style="padding:50px;"><h5>'
-																							+ email
-																							+ '</h5><h5>'
-																							+ contactnumber
-																							+ '</h5></div>';
-
-																					$(
-																							'div#shipmentdetails')
-																							.html(
-																									afterUpdateHtml);
-
-																					$(
-																							'#editaddressbutton')
-																							.text(
-																									'Change Delivery Address');
-
-																				})
-																		.fail(
-																				function() {
-																					alert("error");
-																				})
-																		.always(
-																				function() {
-																				});
-
-															});
+											updateUser(esfCookieValues[1],
+													esfCookieValues[0],
+													updateStrData);
 
 										}
 
@@ -565,8 +522,6 @@ $(document)
 
 					function bindUser() {
 
-						console.log(esfCookieValues[0]);
-
 						var jqxhr = $.get(
 								"https://easysmartfood.appspot.com/user?useruuid="
 										+ esfCookieValues[0], function() {
@@ -577,10 +532,9 @@ $(document)
 
 							var source = $("#shiptotemplate").html();
 
-							console.log(source);
-
 							var template = Handlebars.compile(source);
 							username = userResponse.username;
+							fullname = userResponse.fullname;
 							region = userResponse.region;
 							address1 = userResponse.address1;
 							address2 = userResponse.address2;
@@ -627,6 +581,70 @@ function PriceSummaryData(totalWithoutTax, taxAmt, taxPercent, deliveryCharge,
 	this.currency = currency;
 }
 
+function updateUser(username, userid, updateStrData) {
+	var response = $
+			.ajax(
+					{
+						type : "PUT",
+						url : "http://easysmartfood.appspot.com/user?username="
+								+ username + "&useruuid=" + userid,
+						data : updateStrData
+					})
+			.fail(function(msg) {
+
+				console.log('Error Occured');
+			})
+			.done(
+					function(msg) {
+
+						var jqxhr = $
+								.get(
+										"https://easysmartfood.appspot.com/user?useruuid="
+												+ userid, function() {
+
+										})
+								.done(
+										function() {
+
+											userResponse = jqxhr.responseJSON;
+											fullname = userResponse.fullname;
+											address1 = userResponse.address1;
+											address2 = userResponse.address2;
+											region = userResponse.region;
+											landmark = userResponse.landmark;
+											city = userResponse.city;
+											contactnumber = userResponse.contactnumber;
+											email = userResponse.email;
+											company = userResponse.company;
+
+											var afterUpdateHtml = '<div class="col-lg-6 col-xs-12" style="padding:50px;"><h4>'
+													+ address1
+													+ '</h4><h4>'
+													+ address2
+													+ '</h4><h4>'
+													+ city
+													+ '</h4><h4>'
+													+ landmark
+													+ '</h4></div><div class="col-lg-4 col-xs-12" style="padding:50px;"><h5>'
+													+ email
+													+ '</h5><h5>'
+													+ contactnumber
+													+ '</h5></div>';
+
+											$('div#shipmentdetails').html(
+													afterUpdateHtml);
+
+											$('#editaddressbutton').text(
+													'Change Delivery Address');
+
+										}).fail(function() {
+									alert("error");
+								}).always(function() {
+								});
+
+					});
+}
+
 function Order(orderStatus, createTs, createdBy, updatedTs, updatedBy,
 		userData, foodItems, priceSummaryData, restaurantName) {
 
@@ -662,4 +680,71 @@ function getCookie(c_name) {
 		c_value = unescape(c_value.substring(c_start, c_end));
 	}
 	return c_value;
+}
+
+function validateInputs(fullname, email, contactnumber, address1) {
+
+	var valid = false;
+
+	if (fullname == '') {
+
+		$('#fullname').css({
+			"border-color" : "red"
+		});
+
+	} else {
+
+		$('#fullname').css({
+			"border-color" : ""
+		});
+	}
+
+	if (email == '' || !validateEmail(email)) {
+		$('#email').css({
+			"border-color" : "red"
+		});
+	} else {
+
+		$('#email').css({
+			"border-color" : ""
+		});
+	}
+
+	if (contactnumber == '') {
+
+		$('#contactnumber').css({
+			"border-color" : "red"
+		});
+
+	} else {
+
+		$('#contactnumber').css({
+			"border-color" : ""
+		});
+	}
+
+	if (address1 == '') {
+
+		$('#address1').css({
+			"border-color" : "red"
+		});
+
+	} else {
+
+		$('#address1').css({
+			"border-color" : ""
+		});
+	}
+
+	if (fullname != '' && validateEmail(email) && address1 != ''
+			&& contactnumber != '') {
+		valid = true;
+		return valid;
+	}
+
+}
+
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
 }
