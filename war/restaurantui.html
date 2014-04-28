@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Admin Portal</title>
-    
-    
+<title>Admin Portal</title>
 
-    <!-- Bootstrap core CSS -->
-     <!--  <link href="dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    
-    <!-- <!-- Bootstrap core CSS -->
-       <link href="http://esfwebui.appspot.com/css/bootstrap_v1.css" rel="stylesheet">  
 
-    <!-- Custom styles for this template -->
-  <!--     <link href="dist/css/dashboard.css" rel="stylesheet">  --> 
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- Bootstrap core CSS -->
+<!--  <link href="dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<!-- <!-- Bootstrap core CSS -->
+<link href="http://esfwebui.appspot.com/css/bootstrap_v1.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<!--     <link href="dist/css/dashboard.css" rel="stylesheet">  -->
+
+<!-- Just for debugging purposes. Don't actually copy this line! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  <style id="holderjs-style" type="text/css"></style>
-  
+<style id="holderjs-style" type="text/css"></style>
 
-  <style>
-  
-  body {
+
+<style>
+body {
 	background: url('');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -48,36 +49,84 @@
 	background-size: cover;
 }
 
-
-   .navbar-inverse {
-background-color: #ffffff;
-border-color: #080808;
-} 
-
-h6, .h6 {
-color: #66CD00;
+.navbar-inverse {
+	background-color: #ffffff;
+	border-color: #080808;
 }
 
-h2, .h2 {
-color: #526907;
+h6,.h6 {
+	color: #66CD00;
 }
-  .glyphicon-lg{font-size:3em}
-.blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
-.blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
-.blockquote-box.blockquote-primary{border-color:#357EBD}
-.blockquote-box.blockquote-primary .square{background-color:#428BCA;color:#FFF}
-.blockquote-box.blockquote-success{border-color:#4CAE4C}
-.blockquote-box.blockquote-success .square{background-color:#5CB85C;color:#FFF}
-.blockquote-box.blockquote-info{border-color:#46B8DA}
-.blockquote-box.blockquote-info .square{background-color:#5BC0DE;color:#FFF}
-.blockquote-box.blockquote-warning{border-color:#EEA236}
-.blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
-.blockquote-box.blockquote-danger{border-color:#D43F3A}
-.blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
-  
-  </style>
-  
-  <style>
+
+h2,.h2 {
+	color: #526907;
+}
+
+.glyphicon-lg {
+	font-size: 3em
+}
+
+.blockquote-box {
+	border-right: 5px solid #E6E6E6;
+	margin-bottom: 25px
+}
+
+.blockquote-box .square {
+	width: 100px;
+	min-height: 50px;
+	margin-right: 22px;
+	text-align: center !important;
+	background-color: #E6E6E6;
+	padding: 20px 0
+}
+
+.blockquote-box.blockquote-primary {
+	border-color: #357EBD
+}
+
+.blockquote-box.blockquote-primary .square {
+	background-color: #428BCA;
+	color: #FFF
+}
+
+.blockquote-box.blockquote-success {
+	border-color: #4CAE4C
+}
+
+.blockquote-box.blockquote-success .square {
+	background-color: #5CB85C;
+	color: #FFF
+}
+
+.blockquote-box.blockquote-info {
+	border-color: #46B8DA
+}
+
+.blockquote-box.blockquote-info .square {
+	background-color: #5BC0DE;
+	color: #FFF
+}
+
+.blockquote-box.blockquote-warning {
+	border-color: #EEA236
+}
+
+.blockquote-box.blockquote-warning .square {
+	background-color: #F0AD4E;
+	color: #FFF
+}
+
+.blockquote-box.blockquote-danger {
+	border-color: #D43F3A
+}
+
+.blockquote-box.blockquote-danger .square {
+	background-color: #D9534F;
+	color: #FFF
+}
+</style>
+
+<style>
 h4 {
 	color: white;
 }
@@ -139,8 +188,8 @@ a,a:hover {
 }
 
 a,a {
-color: #428bca;
-text-decoration: none;
+	color: #428bca;
+	text-decoration: none;
 }
 
 .bg {
@@ -148,8 +197,6 @@ text-decoration: none;
 	background-color: rgba(39, 63, 43, 0.4);
 	margin-bottom: 5%;
 }
-
-
 
 h4 {
 	overflow: hidden;
@@ -178,12 +225,12 @@ ul>li {
 	margin: 25px;
 }
 </style>
-  
-  </head>
 
-  <body style="">
-  
-  <nav class="navbar navbar-inverse">
+</head>
+
+<body style="">
+
+	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -214,338 +261,445 @@ ul>li {
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
-		
+
 		<!-- /.container -->
 	</nav>
 
-<div class="container">
-    <div class="row">
-        <h2>
-            Select Restaurants</h2>
-        <div class="col-md-6">
-            <div class="blockquote-box clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=b3d7f01a-9cf6-11e3-8d05-425861b86ab6&restaurantname=Majlis&restaurantregion=Edapally
-" >
-                     <img class="img-responsive" src="https://lh4.googleusercontent.com/vuAyNOr5fmF5nEud1kkfIcoJxSJP7mdpUEQHZIQqMA=w314-h207-p-no" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=b3d7f01a-9cf6-11e3-8d05-425861b86ab6&restaurantname=Majlis&restaurantregion=Edapally
-" > Cochin Majlis - Arabian restaurant </a></h4>
-                <p>
-                    <h6> Edapally - Arabian Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-primary clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=1d6100f5-a302-4ecb-bcdc-1012c80bd63a&restaurantname=Hot%20Jungle&restaurantregion=Edapally" >
-                      <img class="img-responsive" src="https://lh3.googleusercontent.com/-tT6P1n-ScBs/Uy54QDloOnI/AAAAAAAAAGc/jGB4yvmHvZc/w733-h488-no/17.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=1d6100f5-a302-4ecb-bcdc-1012c80bd63a&restaurantname=Hot%20Jungle&restaurantregion=Edapally" > Hot Jungle - Forest theme restaurant </a></h4>
-                <p>
-                    <h6> Edapally - Multi Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-success clearfix">
-              <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=199fc263-ff7b-403f-8c40-186dd43f13ab&restaurantname=Mamma%20Mia&restaurantregion=Kakkanad
-" > 
-                     <img class="img-responsive" src="https://lh5.googleusercontent.com/-aSYtaabJEYg/UyqgOEHC-0I/AAAAAAAAAFU/Vc_IVUOYnMY/w420-h270-no/mamma-mia-food-court-kochi-kochiservnet-hangout-image-main.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=199fc263-ff7b-403f-8c40-186dd43f13ab&restaurantname=Mamma%20Mia&restaurantregion=Kakkanad" > Mamma Mia - Variety restaurant </a></h4>
-                <p>
-                    <h6> Kakkanad - Multi Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="blockquote-box blockquote-info clearfix">
-               <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f4073bad-c2f2-43be-bb4f-172456973f9e&restaurantname=BurgerSpot&restaurantregion=Kalamassery
-" > 
-                     <img class="img-responsive" src="https://lh6.googleusercontent.com/-gtnzUi_NDYo/Uy-tJSHzJqI/AAAAAAAAHEY/li43CB9zciE/w176-h117-no/11.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f4073bad-c2f2-43be-bb4f-172456973f9e&restaurantname=BurgerSpot&restaurantregion=Kalamassery
-" > BurgerSpot - Western restaurant </a></h4>
-                <p>
-                    <h6> Kalamassery - Western Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-warning clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=268acf79-ef42-4e6f-b8ec-b730c6e41f28&restaurantname=Chai%20Cofi&restaurantregion=Palarivattom" >
-                      <img class="img-responsive" src="https://lh5.googleusercontent.com/-Muqa4FQhUow/Uy-t4oO3tYI/AAAAAAAAHEg/uN2ewmWkKNI/w733-h488-no/12.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=268acf79-ef42-4e6f-b8ec-b730c6e41f28&restaurantname=Chai%20Cofi&restaurantregion=Palarivattom" > Chai Cofi - Rocking restaurant </a></h4>
-                <p>
-                    <h6> Palarivattom - Western Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-danger clearfix">
-               <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor" > 
-                     <img class="img-responsive" src="https://lh4.googleusercontent.com/-nWPz06bYWCc/Uy54RycczUI/AAAAAAAAAHE/kTzrP3QvBXI/w176-h117-no/9.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor" > K.R.Bakes - Bakery restaurant </a></h4>
-                <p>
-                    <h6> Palarivattom - Multi Cuisine  </h6>       
-                    <h6> 11:00 AM to 08:00 PM </h6>        
-                </p>
-            </div>
+	<div class="container">
+		<div class="row">
+			<h2>Select Restaurants</h2>
+			<div class="col-md-6">
+				<div class="blockquote-box clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=b3d7f01a-9cf6-11e3-8d05-425861b86ab6&restaurantname=Majlis&restaurantregion=Edapally
+">
+							<img class="img-responsive"
+							src="https://lh4.googleusercontent.com/vuAyNOr5fmF5nEud1kkfIcoJxSJP7mdpUEQHZIQqMA=w314-h207-p-no"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=b3d7f01a-9cf6-11e3-8d05-425861b86ab6&restaurantname=Majlis&restaurantregion=Edapally
+">
+							Cochin Majlis - Arabian restaurant </a>
+					</h4>
+					<p>
+					<h6>Edapally - Arabian Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-primary clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=1d6100f5-a302-4ecb-bcdc-1012c80bd63a&restaurantname=Hot%20Jungle&restaurantregion=Edapally">
+							<img class="img-responsive"
+							src="https://lh3.googleusercontent.com/-tT6P1n-ScBs/Uy54QDloOnI/AAAAAAAAAGc/jGB4yvmHvZc/w733-h488-no/17.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=1d6100f5-a302-4ecb-bcdc-1012c80bd63a&restaurantname=Hot%20Jungle&restaurantregion=Edapally">
+							Hot Jungle - Forest theme restaurant </a>
+					</h4>
+					<p>
+					<h6>Edapally - Multi Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-success clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=199fc263-ff7b-403f-8c40-186dd43f13ab&restaurantname=Mamma%20Mia&restaurantregion=Kakkanad
+">
+							<img class="img-responsive"
+							src="https://lh5.googleusercontent.com/-aSYtaabJEYg/UyqgOEHC-0I/AAAAAAAAAFU/Vc_IVUOYnMY/w420-h270-no/mamma-mia-food-court-kochi-kochiservnet-hangout-image-main.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=199fc263-ff7b-403f-8c40-186dd43f13ab&restaurantname=Mamma%20Mia&restaurantregion=Kakkanad">
+							Mamma Mia - Variety restaurant </a>
+					</h4>
+					<p>
+					<h6>Kakkanad - Multi Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="blockquote-box blockquote-info clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f4073bad-c2f2-43be-bb4f-172456973f9e&restaurantname=BurgerSpot&restaurantregion=Kalamassery
+">
+							<img class="img-responsive"
+							src="https://lh6.googleusercontent.com/-gtnzUi_NDYo/Uy-tJSHzJqI/AAAAAAAAHEY/li43CB9zciE/w176-h117-no/11.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f4073bad-c2f2-43be-bb4f-172456973f9e&restaurantname=BurgerSpot&restaurantregion=Kalamassery
+">
+							BurgerSpot - Western restaurant </a>
+					</h4>
+					<p>
+					<h6>Kalamassery - Western Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-warning clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=268acf79-ef42-4e6f-b8ec-b730c6e41f28&restaurantname=Chai%20Cofi&restaurantregion=Palarivattom">
+							<img class="img-responsive"
+							src="https://lh5.googleusercontent.com/-Muqa4FQhUow/Uy-t4oO3tYI/AAAAAAAAHEg/uN2ewmWkKNI/w733-h488-no/12.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=268acf79-ef42-4e6f-b8ec-b730c6e41f28&restaurantname=Chai%20Cofi&restaurantregion=Palarivattom">
+							Chai Cofi - Rocking restaurant </a>
+					</h4>
+					<p>
+					<h6>Palarivattom - Western Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-danger clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor">
+							<img class="img-responsive"
+							src="https://lh4.googleusercontent.com/-nWPz06bYWCc/Uy54RycczUI/AAAAAAAAAHE/kTzrP3QvBXI/w176-h117-no/9.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor">
+							K.R.Bakes - Bakery restaurant </a>
+					</h4>
+					<p>
+					<h6>Palarivattom - Multi Cuisine</h6>
+					<h6>11:00 AM to 08:00 PM</h6>
+					</p>
+				</div>
 
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                
-        
-        <div class="col-md-6">
-              <div class="blockquote-box clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f44760c4-840a-487d-8bb1-13736cf64bfb&restaurantname=Mubaraq&restaurantregion=Kaloor
-" >
-                     <img class="img-responsive" src="https://lh5.googleusercontent.com/-iZm6dmn9Kd8/Uy54RNuS3FI/AAAAAAAAAG0/X748OQTV1gc/w176-h117-no/3.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f44760c4-840a-487d-8bb1-13736cf64bfb&restaurantname=Mubaraq&restaurantregion=Kaloor
-" > Mubaraq - Kerala restaurant </a></h4>
-                <p>
-                    <h6> Kaloor - Kerala Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-primary clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ad45f90a-8b84-11e3-ae4d-d231feb1dc81&restaurantname=HotSpot&restaurantregion=Kaloor
-" > 
-                     <img class="img-responsive" src="https://lh3.googleusercontent.com/-qcpUAP4IEBI/Uy54Qyij3II/AAAAAAAAAGs/I8aVx7BHON4/w733-h488-no/2.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ad45f90a-8b84-11e3-ae4d-d231feb1dc81&restaurantname=HotSpot&restaurantregion=Kaloor
-" > HotSpot - Arabian restaurant </a></h4>
-                <p>
-                    <h6> Kathrikadavu - Arabian Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-success clearfix">
-              <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=953665ab-1397-4938-9fbb-0d17db80c002&restaurantname=Best%20Bakers%20Restaurant&restaurantregion=Edapally" > 
-                     <img class="img-responsive" src="https://lh4.googleusercontent.com/-JN4QoMF0GQg/Uy54QZZ0jWI/AAAAAAAAAGk/zR98jQFZlHQ/w733-h488-no/18.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=953665ab-1397-4938-9fbb-0d17db80c002&restaurantname=Best%20Bakers%20Restaurant&restaurantregion=Edapally" > Best Bakers - Bakery restaurant </a></h4>
-                <p>
-                    <h6> Edapally - Multi Cuisine  </h6>       
-                    <h6> 11:00 AM to 08:00 PM </h6>        
-                </p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="blockquote-box blockquote-info clearfix">
-               <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=dbdc6313-888e-4bf8-9a92-d02e92c9ce0d&restaurantname=Best%20Bakers%20Cakes&restaurantregion=Edapally" > 
-                     <img class="img-responsive" src="https://lh4.googleusercontent.com/-JN4QoMF0GQg/Uy54QZZ0jWI/AAAAAAAAAGk/zR98jQFZlHQ/w733-h488-no/18.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=dbdc6313-888e-4bf8-9a92-d02e92c9ce0d&restaurantname=Best%20Bakers%20Cakes&restaurantregion=Edapally" > Best Bakers - Cakes </a></h4>
-                <p>
-                    <h6> Edapally - Cakes </h6>       
-                    <h6> 11:00 AM to 08:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-warning clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor" >
-                      <img class="img-responsive" src="https://lh4.googleusercontent.com/-nWPz06bYWCc/Uy54RycczUI/AAAAAAAAAHE/kTzrP3QvBXI/w176-h117-no/9.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor" > K.R.Bakes - Cakes </a></h4>
-                <p>
-                    <h6> Palarivattom - Cakes  </h6>       
-                    <h6> 11:00 AM to 08:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-danger clearfix">
-               <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=0666a30d-b72e-4ec9-9612-994fb83535f8&restaurantname=Food%20Marley&restaurantregion=Palarivattom
-" > 
-                     <img class="img-responsive" src="https://lh5.googleusercontent.com/-9JTjxbkUXs0/U0m_95zWp7I/AAAAAAAAAIs/UxMfVkR4S3M/w733-h488-no/Food+Marley.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=0666a30d-b72e-4ec9-9612-994fb83535f8&restaurantname=Food%20Marley&restaurantregion=Palarivattom
-" > Food Marley - Burger restaurant </a></h4>
-                <p>
-                    <h6> Palarivattom - Western Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <div class="col-md-6">
-            <div class="blockquote-box clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f405f282-c74a-4982-a203-5aae32dc263d&restaurantname=Monsoon%20Cafe%20and%20Restaurant&restaurantregion=Kaloor" >
-                     <img class="img-responsive" src="https://lh5.googleusercontent.com/-A0l5E-SB7uY/Uy-wn9TqE0I/AAAAAAAAHFA/4bRNlY5WTmI/w733-h488-no/15.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f405f282-c74a-4982-a203-5aae32dc263d&restaurantname=Monsoon%20Cafe%20and%20Restaurant&restaurantregion=Kaloor" > Monsoon Cafe - South restaurant </a></h4>
-                <p>
-                    <h6> Kaloor - South Indian Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-primary clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=cbf114c5-3944-4b49-9c4f-c2a03edacd9d&restaurantname=Inchino&restaurantregion=Kaloor" > 
-                     <img class="img-responsive" src="https://lh6.googleusercontent.com/-43i_Opk2XPE/Uy-wYHZmgSI/AAAAAAAAHEw/2Ofi4LtjU9k/w733-h488-no/16.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=cbf114c5-3944-4b49-9c4f-c2a03edacd9d&restaurantname=Inchino&restaurantregion=Kaloor" > Inchino - Chinese restaurant </a></h4>
-                <p>
-                    <h6> Kaloor - Chinese Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-success clearfix">
-              <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ea36f101-c57c-439d-970d-a024f80259b7&restaurantname=Chopstik&restaurantregion=Palarivattom" >
-                      <img class="img-responsive" src="https://lh3.googleusercontent.com/-_3HhjArLgQg/Uy-xFn2PfcI/AAAAAAAAHFY/R_n6cIdtB54/w176-h117-no/4.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ea36f101-c57c-439d-970d-a024f80259b7&restaurantname=Chopstik&restaurantregion=Palarivattom" > Chopstix - Thai restaurant </a></h4>
-                <p>
-                    <h6> Palarivattom - Thai/Chinese Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="blockquote-box blockquote-info clearfix">
-               <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=4c93fe64-498c-47c0-b4e3-67af960872f9&restaurantname=GaramMasala&restaurantregion=Palarivattom" > 
-                     <img class="img-responsive" src="https://lh6.googleusercontent.com/-dknH-SHWy74/Uy54Sh7zKeI/AAAAAAAAAHQ/RFTkAMzpTSU/w176-h117-no/Gram.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=4c93fe64-498c-47c0-b4e3-67af960872f9&restaurantname=GaramMasala&restaurantregion=Palarivattom" > Garam Masala - North Indian restaurant </a></h4>
-                <p>
-                    <h6> Palarivattom - North Indian Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-warning clearfix">
-                <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor" >
-                      <img class="img-responsive" src="https://lh3.googleusercontent.com/-YJip41a936k/Uy54O_atkeI/AAAAAAAAAGE/Vg1AtsmxE3o/w733-h488-no/13.jpg" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor" > Marhaba - Malabar restaurant </a></h4>
-                <p>
-                    <h6> Kaloor - Malabar Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-            <div class="blockquote-box blockquote-danger clearfix">
-               <div class="square pull-left">
-                     <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=40ed452e-23ab-439f-b127-b5605b9e14f4&restaurantname=Rolexio&restaurantregion=Palarivattom" >
-                      <img class="img-responsive" src="https://lh4.googleusercontent.com/0NQicZ_Js8BdWTJcaSlJp-2TJjtTi5oYFPZ1is-DFg=w314-h207-p-no" alt="" />
-                     </a>
-               <!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
-                </div>
-                <h4>
-                    <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=40ed452e-23ab-439f-b127-b5605b9e14f4&restaurantname=Rolexio&restaurantregion=Palarivattom" > Rolexio - Thalassery restaurant </a></h4>
-                <p>
-                    <h6> Palarivattom - Thalassery Cuisine  </h6>       
-                    <h6> 11:00 AM to 10:00 PM </h6>        
-                </p>
-            </div>
-
-        </div>
-        
-        
-
-        
-        
-        
-        
-        
-        
-    </div>
-</div>
+			</div>
 
 
-<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="col-md-6">
+				<div class="blockquote-box clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f44760c4-840a-487d-8bb1-13736cf64bfb&restaurantname=Mubaraq&restaurantregion=Kaloor
+">
+							<img class="img-responsive"
+							src="https://lh5.googleusercontent.com/-iZm6dmn9Kd8/Uy54RNuS3FI/AAAAAAAAAG0/X748OQTV1gc/w176-h117-no/3.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f44760c4-840a-487d-8bb1-13736cf64bfb&restaurantname=Mubaraq&restaurantregion=Kaloor
+">
+							Mubaraq - Kerala restaurant </a>
+					</h4>
+					<p>
+					<h6>Kaloor - Kerala Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-primary clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ad45f90a-8b84-11e3-ae4d-d231feb1dc81&restaurantname=HotSpot&restaurantregion=Kaloor
+">
+							<img class="img-responsive"
+							src="https://lh3.googleusercontent.com/-qcpUAP4IEBI/Uy54Qyij3II/AAAAAAAAAGs/I8aVx7BHON4/w733-h488-no/2.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ad45f90a-8b84-11e3-ae4d-d231feb1dc81&restaurantname=HotSpot&restaurantregion=Kaloor
+">
+							HotSpot - Arabian restaurant </a>
+					</h4>
+					<p>
+					<h6>Kathrikadavu - Arabian Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-success clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=953665ab-1397-4938-9fbb-0d17db80c002&restaurantname=Best%20Bakers%20Restaurant&restaurantregion=Edapally">
+							<img class="img-responsive"
+							src="https://lh4.googleusercontent.com/-JN4QoMF0GQg/Uy54QZZ0jWI/AAAAAAAAAGk/zR98jQFZlHQ/w733-h488-no/18.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=953665ab-1397-4938-9fbb-0d17db80c002&restaurantname=Best%20Bakers%20Restaurant&restaurantregion=Edapally">
+							Best Bakers - Bakery restaurant </a>
+					</h4>
+					<p>
+					<h6>Edapally - Multi Cuisine</h6>
+					<h6>11:00 AM to 08:00 PM</h6>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="blockquote-box blockquote-info clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=dbdc6313-888e-4bf8-9a92-d02e92c9ce0d&restaurantname=Best%20Bakers%20Cakes&restaurantregion=Edapally">
+							<img class="img-responsive"
+							src="https://lh4.googleusercontent.com/-JN4QoMF0GQg/Uy54QZZ0jWI/AAAAAAAAAGk/zR98jQFZlHQ/w733-h488-no/18.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=dbdc6313-888e-4bf8-9a92-d02e92c9ce0d&restaurantname=Best%20Bakers%20Cakes&restaurantregion=Edapally">
+							Best Bakers - Cakes </a>
+					</h4>
+					<p>
+					<h6>Edapally - Cakes</h6>
+					<h6>11:00 AM to 08:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-warning clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor">
+							<img class="img-responsive"
+							src="https://lh4.googleusercontent.com/-nWPz06bYWCc/Uy54RycczUI/AAAAAAAAAHE/kTzrP3QvBXI/w176-h117-no/9.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor">
+							K.R.Bakes - Cakes </a>
+					</h4>
+					<p>
+					<h6>Palarivattom - Cakes</h6>
+					<h6>11:00 AM to 08:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-danger clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=0666a30d-b72e-4ec9-9612-994fb83535f8&restaurantname=Food%20Marley&restaurantregion=Palarivattom
+">
+							<img class="img-responsive"
+							src="https://lh5.googleusercontent.com/-9JTjxbkUXs0/U0m_95zWp7I/AAAAAAAAAIs/UxMfVkR4S3M/w733-h488-no/Food+Marley.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=0666a30d-b72e-4ec9-9612-994fb83535f8&restaurantname=Food%20Marley&restaurantregion=Palarivattom
+">
+							Food Marley - Burger restaurant </a>
+					</h4>
+					<p>
+					<h6>Palarivattom - Western Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="col-md-6">
+				<div class="blockquote-box clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f405f282-c74a-4982-a203-5aae32dc263d&restaurantname=Monsoon%20Cafe%20and%20Restaurant&restaurantregion=Kaloor">
+							<img class="img-responsive"
+							src="https://lh5.googleusercontent.com/-A0l5E-SB7uY/Uy-wn9TqE0I/AAAAAAAAHFA/4bRNlY5WTmI/w733-h488-no/15.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=f405f282-c74a-4982-a203-5aae32dc263d&restaurantname=Monsoon%20Cafe%20and%20Restaurant&restaurantregion=Kaloor">
+							Monsoon Cafe - South restaurant </a>
+					</h4>
+					<p>
+					<h6>Kaloor - South Indian Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-primary clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=cbf114c5-3944-4b49-9c4f-c2a03edacd9d&restaurantname=Inchino&restaurantregion=Kaloor">
+							<img class="img-responsive"
+							src="https://lh6.googleusercontent.com/-43i_Opk2XPE/Uy-wYHZmgSI/AAAAAAAAHEw/2Ofi4LtjU9k/w733-h488-no/16.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=cbf114c5-3944-4b49-9c4f-c2a03edacd9d&restaurantname=Inchino&restaurantregion=Kaloor">
+							Inchino - Chinese restaurant </a>
+					</h4>
+					<p>
+					<h6>Kaloor - Chinese Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-success clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ea36f101-c57c-439d-970d-a024f80259b7&restaurantname=Chopstik&restaurantregion=Palarivattom">
+							<img class="img-responsive"
+							src="https://lh3.googleusercontent.com/-_3HhjArLgQg/Uy-xFn2PfcI/AAAAAAAAHFY/R_n6cIdtB54/w176-h117-no/4.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=ea36f101-c57c-439d-970d-a024f80259b7&restaurantname=Chopstik&restaurantregion=Palarivattom">
+							Chopstix - Thai restaurant </a>
+					</h4>
+					<p>
+					<h6>Palarivattom - Thai/Chinese Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="blockquote-box blockquote-info clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=4c93fe64-498c-47c0-b4e3-67af960872f9&restaurantname=GaramMasala&restaurantregion=Palarivattom">
+							<img class="img-responsive"
+							src="https://lh6.googleusercontent.com/-dknH-SHWy74/Uy54Sh7zKeI/AAAAAAAAAHQ/RFTkAMzpTSU/w176-h117-no/Gram.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=4c93fe64-498c-47c0-b4e3-67af960872f9&restaurantname=GaramMasala&restaurantregion=Palarivattom">
+							Garam Masala - North Indian restaurant </a>
+					</h4>
+					<p>
+					<h6>Palarivattom - North Indian Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-warning clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor">
+							<img class="img-responsive"
+							src="https://lh3.googleusercontent.com/-YJip41a936k/Uy54O_atkeI/AAAAAAAAAGE/Vg1AtsmxE3o/w733-h488-no/13.jpg"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor">
+							Marhaba - Malabar restaurant </a>
+					</h4>
+					<p>
+					<h6>Kaloor - Malabar Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+				<div class="blockquote-box blockquote-danger clearfix">
+					<div class="square pull-left">
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=40ed452e-23ab-439f-b127-b5605b9e14f4&restaurantname=Rolexio&restaurantregion=Palarivattom">
+							<img class="img-responsive"
+							src="https://lh4.googleusercontent.com/0NQicZ_Js8BdWTJcaSlJp-2TJjtTi5oYFPZ1is-DFg=w314-h207-p-no"
+							alt="" />
+						</a>
+						<!--       <span class="glyphicon glyphicon-music glyphicon-lg"></span> -->
+					</div>
+					<h4>
+						<a
+							href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=40ed452e-23ab-439f-b127-b5605b9e14f4&restaurantname=Rolexio&restaurantregion=Palarivattom">
+							Rolexio - Thalassery restaurant </a>
+					</h4>
+					<p>
+					<h6>Palarivattom - Thalassery Cuisine</h6>
+					<h6>11:00 AM to 10:00 PM</h6>
+					</p>
+				</div>
+
+			</div>
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+	<div class="container">
 
 		<div class="row">
 
@@ -567,20 +721,20 @@ ul>li {
 		</div>
 
 	</div>
-	
-	
-	
-	
 
 
-    <!-- Bootstrap core JavaScript
+
+
+
+
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-   <!--  <script src="dist/js/docs.min.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!--  <script src="dist/js/docs.min.js"></script>
  -->
- <script>
+	<script>
  
 	function getCookie(c_name) {
 		var c_value = document.cookie;
@@ -621,9 +775,9 @@ ul>li {
 			$('#loginmenu').append('<li><a href="/login.html">Login</a></li>');
 		});
 	</script>
-	
 
-<script>
+
+	<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -636,4 +790,5 @@ ul>li {
 
 
 
-</body></html>
+</body>
+</html>
