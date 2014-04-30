@@ -437,6 +437,10 @@ form#profileform {
 														required : true,
 														email : true
 													}
+													,
+													region: {
+														required : true
+													}
 												},
 
 												// Specify the validation error messages
@@ -447,7 +451,8 @@ form#profileform {
 													password : {
 														required : "Please provide a password",
 														minlength : "Your password must be at least 5 characters long"
-													}
+													},
+													region : "Please select your region"
 												},
 
 												submitHandler : function(form) {
