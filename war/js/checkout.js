@@ -31,6 +31,8 @@ var email;
 var contactnumber;
 var region;
 var deliveryCost;
+var packageCostAmt;
+var totalStr;
 var company;
 var fullname;
 
@@ -53,6 +55,34 @@ var jqxhr = $.getJSON("http://easysmartfood.appspot.com/region", function() {
 	console.log("error");
 });
 
+function updateTotalAmt(){
+	
+	totalStr = $('.simpleCart_total').text();
+
+	totalStr = totalStr.substring(2, totalStr.length);
+
+	totalStr = totalStr.replace(/,/g, "");
+
+	totalStr = parseFloat(totalStr);
+
+	var delivery = $('.simpleCart_shippingCost').text();
+
+	deliveryCost = delivery.substring(2, delivery.length);
+
+	deliveryCost = parseFloat(deliveryCost);
+	
+	var packageCost = $('.simpleCart_packingCost ').text();
+
+	packageCostAmt = packageCost.substring(2, packageCost.length);
+
+	packageCostAmt = parseFloat(packageCostAmt);
+
+	var totalCost = deliveryCost + totalStr + packageCostAmt;
+
+	$('.simpleCart_finalTotal').text(totalCost);
+	
+}
+
 function calculateDeliveryCost(restName, region) {
 	var url = 'http://easysmartfood.appspot.com/getdeliverycharge?restaurantname='
 			+ restName + '&userregion=' + region;
@@ -62,7 +92,7 @@ function calculateDeliveryCost(restName, region) {
 	}).done(
 			function() {
 
-				var totalStr = $('.simpleCart_total').text();
+//				var totalStr = $('.simpleCart_total').text();
 
 				if (deliveryDtls.responseJSON.deliveryCost != '') {
 
@@ -70,24 +100,36 @@ function calculateDeliveryCost(restName, region) {
 							'Rs ' + deliveryDtls.responseJSON.deliveryCost);
 				} else {
 
-					$('.simpleCart_shippingCost').text('Rs 20');
+					$('.simpleCart_shippingCost').text('Rs 10');
+				}
+				
+
+				if (deliveryDtls.responseJSON.deliveryDistance != '') {
+
+					$('.simpleCart_shippingDistance').text(
+							  deliveryDtls.responseJSON.deliveryDistance);
+				} else {
+
+					$('.simpleCart_shippingDistance').text('5 km');
 				}
 
-				totalStr = totalStr.substring(2, totalStr.length);
-
-				totalStr = totalStr.replace(/,/g, "");
-
-				totalStr = parseFloat(totalStr);
-
-				var delivery = $('.simpleCart_shippingCost').text();
-
-				deliveryCost = delivery.substring(2, delivery.length);
-
-				deliveryCost = parseFloat(deliveryCost);
-
-				var totalCost = deliveryCost + totalStr;
-
-				$('.simpleCart_finalTotal').text(totalCost);
+//				totalStr = totalStr.substring(2, totalStr.length);
+//
+//				totalStr = totalStr.replace(/,/g, "");
+//
+//				totalStr = parseFloat(totalStr);
+//
+//				var delivery = $('.simpleCart_shippingCost').text();
+//
+//				deliveryCost = delivery.substring(2, delivery.length);
+//
+//				deliveryCost = parseFloat(deliveryCost);
+//
+//				var totalCost = deliveryCost + totalStr;
+//
+//				$('.simpleCart_finalTotal').text(totalCost);
+				
+				updateTotalAmt();
 
 			}).fail(function() {
 
@@ -193,6 +235,7 @@ $(document)
 		.ready(
 				function() {
 
+					
 					// check if the user is logged in
 					esfuuid = getCookie('esfuuid');
 					if (esfuuid != null) {
@@ -212,6 +255,14 @@ $(document)
 					var restName = getCookie('esfrestname');
 
 					var esfuserCookie = getCookie('esfuuid');
+					
+					//Initialize Delivery charge
+					$('.simpleCart_shippingCost').text('Rs 10');
+					$('.simpleCart_shippingDistance').text('5 km');
+					$('.simpleCart_packingCost').text('Rs 10');
+					//Update Amounts
+					updateTotalAmt();
+					
 
 					if (esfuserCookie != null) {
 						var region = esfuserCookie.split('|');
@@ -219,6 +270,8 @@ $(document)
 						calculateDeliveryCost(restName, region[2]);
 
 					}
+					
+					
 
 					$('#orderbutton')
 							.on(
@@ -272,7 +325,9 @@ $(document)
 													'#contactnumber').val();
 											userResponse.email = $('#email')
 													.val();
-											userResponse.region = '';
+										//	alert("Region::" + $('#regselector').val());
+										//	userResponse.region = '';
+											userResponse.region =  $('#regselector').val();
 											userResponse.address1 = $(
 													'#address1').val();
 											userResponse.address2 = $(
@@ -312,6 +367,8 @@ $(document)
 										var delivery = $(
 												'.simpleCart_shippingCost')
 												.text();
+										
+								
 
 										var totalCost = $(
 												'.simpleCart_finalTotal')
@@ -329,8 +386,8 @@ $(document)
 										var updatedBy = '';
 
 										var priceSummaryData = new PriceSummaryData(
-												'0.0', '0.0', '0',
-												deliveryCost, '0.0', totalCost,
+												totalStr, '0.0', '0',
+												deliveryCost, packageCostAmt, totalCost,
 												'Rs');
 
 										userResponse.foodComments = $(
