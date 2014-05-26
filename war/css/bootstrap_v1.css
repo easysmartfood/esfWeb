@@ -4530,7 +4530,7 @@ border-top-left-radius
 
 .navbar-brand {
 	float: left;
-	padding: 15px 15px;
+	padding: 3px 0px 0px 125px;
 	font-size: 18px;
 	line-height: 20px;
 }
@@ -4621,7 +4621,7 @@ border-top-left-radius
 		padding-bottom: 15px;
 	}
 	.navbar-nav.navbar-right:last-child {
-		margin-right: -15px;
+		margin-right: 100px;
 	}
 }
 
@@ -4856,7 +4856,7 @@ border-top-left-radius
 }
 
 .navbar-inverse .navbar-nav>li>a {
-	color: #999999;
+	color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus

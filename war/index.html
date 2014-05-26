@@ -85,6 +85,9 @@ a:hover {
 
 .navbar-inverse {
 	border-color: white;
+	background-image: url('/images/gradient_header.png');
+    background-repeat: repeat-x;
+	
 }
 
 .order {
@@ -92,9 +95,10 @@ a:hover {
 }
 
 .nav {
-	margin-top: 28px;
+	margin-top: 5px;
 	/* this is a faux center fix for the nav options - adjust this if you wish to change the logo height or the font of the menu items */
 }
+
 
 .btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open .dropdown-toggle.btn-primary
 	{
@@ -147,10 +151,11 @@ a:hover {
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
 				<a class="navbar-brand logo-nav" href="index.html"> <img
 					src="images/FINAL_image1.png" class=""
-					style="width: 150px; height: 75px;">
+					style="width: 100px; height: 50px;"> 
 				</a>
+				
 			</div>
-
+            
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 
@@ -187,7 +192,27 @@ a:hover {
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active">
+     <div class="item active">
+      <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=288eb6b5-04d9-43dc-b0e4-49b48194848d&restaurantname=Donar%20Kebab&restaurantregion=Edapally">
+      <img class="img-responsive" src="images/chickenkebabdoner.jpg" alt="">
+      </a>
+      <div class="carousel-caption">
+        <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=288eb6b5-04d9-43dc-b0e4-49b48194848d&restaurantname=Donar%20Kebab&restaurantregion=Edapally">
+        <h1>Doner Kebab Chicken Kebab</h1>
+        </a>
+      </div>
+    </div>
+     <div class="item">
+      <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=64603d1f-222c-4de7-a1da-02c7cf236466&restaurantname=Real%20Arabia&restaurantregion=Kaloor">
+      <img class="img-responsive" src="images/real-arabia.jpg" alt="">
+      </a>
+      <div class="carousel-caption">
+        <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=64603d1f-222c-4de7-a1da-02c7cf236466&restaurantname=Real%20Arabia&restaurantregion=Kaloor">
+        <h1>Real Arabia Shawarma</h1>
+        </a>
+      </div>
+    </div>
+    <div class="item">
       <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor">
       <img class="img-responsive" src="https://lh4.googleusercontent.com/-nH9NsUavx9g/U1wwZgWKsuI/AAAAAAAAHI8/Y-m5A3ZwUe8/w1000-h665-no/DSC_0495.JPG" alt="">
       </a>
@@ -225,8 +250,22 @@ a:hover {
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active">
-      <img class="img-responsive" src="https://lh6.googleusercontent.com/-bHWMYFMLYtY/U2xVcSN80WI/AAAAAAAAHL0/0qrE-srcvCE/s752/bannerfans_11165377%2520%25282%2529.jpg" alt="">
+     <div class="item active">
+      <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=288eb6b5-04d9-43dc-b0e4-49b48194848d&restaurantname=Donar%20Kebab&restaurantregion=Edapally">
+      <img class="img-responsive" src="images/Doner_Kebab.jpg" alt="">
+      </a>
+      <div class="carousel-caption">
+      </div>
+    </div>
+    <div class="item">
+      <a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=64603d1f-222c-4de7-a1da-02c7cf236466&restaurantname=Real%20Arabia&restaurantregion=Kaloor">
+      <img class="img-responsive" src="images/Real_Arabia.jpg" alt="">
+      </a>
+      <div class="carousel-caption">
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-responsive" src="images/bannerfans_V5.jpg" alt="">
       <div class="carousel-caption">
       </div>
     </div>
@@ -276,7 +315,7 @@ a:hover {
 
 						<br>
 						<div class="form-group">
-							<label for="searchRestaurant">Search Restaurants in Kochi
+							<label for="searchRestaurant">Order food online from 22+ Kochi's restaurants for home delivery
 							</label> <br> <br>
 
 
@@ -324,10 +363,16 @@ a:hover {
 
 					<br>
 					<button type="submit" class="btn btn-primary btn-lg active"
-						id="search">Search</button>
+						id="search">Find Restaurants</button>
+						
+					<button class="btn btn-primary btn-lg active"
+						id="allrestaurant">All Restaurants</button>		
+					
 
 					<br>
 				</form>
+				
+				
 
 
 
@@ -364,16 +409,14 @@ a:hover {
 							</div>
 							<div class="col-lg-3 col-xs-3">
 								<a
-									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=4c93fe64-498c-47c0-b4e3-67af960872f9&restaurantname=GaramMasala&restaurantregion=Palarivattom
-"><img
-									src="images/home_slider_img3.jpg" alt="Image"
+									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=64603d1f-222c-4de7-a1da-02c7cf236466&restaurantname=Real%20Arabia&restaurantregion=Kaloor"><img
+									src="images/Real_Arabia.jpg" alt="Image"
 									class="cslpic img-responsive"></a>
 							</div>
 							<div class="col-lg-3 col-xs-3">
 								<a
-									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=b3d7f01a-9cf6-11e3-8d05-425861b86ab6&restaurantname=Majlis&restaurantregion=Edapally
-"><img
-									src="images/home_slider_img4.jpg" alt="Image"
+									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=288eb6b5-04d9-43dc-b0e4-49b48194848d&restaurantname=Donar%20Kebab&restaurantregion=Edapally"><img
+									src="images/Doner_Kebab.jpg" alt="Image"
 									class="cslpic img-responsive"></a>
 							</div>
 						</div>
@@ -464,9 +507,8 @@ a:hover {
 									src="images/monsoon.jpg" alt="Image"
 									class="cslpic img-responsive"></a>
 							</div>
-							<div class="col-lg-3 col-xs-3>
-								<a
-									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor"><img
+							<div class="col-lg-3 col-xs-3">
+								<a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor"><img
 									src="images/krbakes.jpg" alt="Image"
 									class="cslpic img-responsive"></a>
 							</div>
@@ -482,6 +524,39 @@ a:hover {
 					</div>
 					<!--/item-->
 
+
+				   	<div class="item">
+						<div class="row">
+							<div class="col-lg-3 col-xs-3">
+								<a
+									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=4c93fe64-498c-47c0-b4e3-67af960872f9&restaurantname=GaramMasala&restaurantregion=Palarivattom
+"><img
+									src="images/home_slider_img3.jpg" alt="Image"
+									class="cslpic img-responsive"></a>
+							</div>
+							<div class="col-lg-3 col-xs-3">
+								<a
+									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=b3d7f01a-9cf6-11e3-8d05-425861b86ab6&restaurantname=Majlis&restaurantregion=Edapally
+"><img
+									src="images/home_slider_img4.jpg" alt="Image"
+									class="cslpic img-responsive"></a>
+							</div>
+							<div class="col-lg-3 col-xs-3">
+								<a href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=d1433b9e-7aeb-4c38-a680-46ba2feaffa2&restaurantname=K.R.Bakes%20Cakes&restaurantregion=Kaloor"><img
+									src="images/krbakes.jpg" alt="Image"
+									class="cslpic img-responsive"></a>
+							</div>
+							<div class="col-lg-3 col-xs-3">
+								<a
+									href="http://www.easysmartfood.co.in/order_v1.html?restaurantuuid=199fc263-ff7b-403f-8c40-186dd43f13ab&restaurantname=Mamma%20Mia&restaurantregion=Kakkanad"><img
+									src="images/home_slider_img1.png" alt="Image"
+									class="cslpic img-responsive"></a>
+							</div>
+
+						</div>
+						<!--/row-->
+					</div>
+					<!--/item-->
 
 				</div>
 				<!--/carousel-inner-->
@@ -533,21 +608,34 @@ a:hover {
 
 					<div class="col-lg-4 col-xs-12 col-sm-12">
 
-						<h4>Kasim Lane, Kaloor Kochi, India 682017</h4>
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081"
-							frameborder="0" style="border: 0"></iframe>
+						<h4>EasySmartFood Home Delivery Regions</h4>
+						<iframe frameborder=0 style='width:100%;height:300px' src='//www.zeemaps.com/pub?group=981771&list=1&x=76.262910&y=10.026354&z=6'> </iframe>
+		
 
 					</div>
+					<!-- 							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081" -->
+					
 
-					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
+					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 0%">
 
-						<h4>
-							Phone: +917558943030, +919388803073<br> <a
+					    <h4>About EasySmartFood </h4>
+					    <p>	
+							
+							Kochi based Online food delivery service. Our delivery staff deliver from more than 22+ restaurants to your doorstep in any of our delivery regions.
+								
+						</p>
+						
+						<p> Minimum Order Amount : Rs 300</p>
+						<p> Timing : 11 AM to 10:00 PM everyday</p>
+					
+					    
+						<p>
+							Phone: +917558943030<br> <a
 								href="mailto:easysmartfood@gmail.com"><u>easysmartfood@gmail.com</u></a>
-
-
-						</h4>
+						</p>
+						
+						
+						
 					</div>
 
 					<div class="col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%">
@@ -712,7 +800,8 @@ a:hover {
 			var restaurant = $('#searchRestaurant').val();
 			if (restaurant == '') {
 
-				window.location = 'http://easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor';
+			//	window.location = 'http://easysmartfood.co.in/order_v1.html?restaurantuuid=74b85fbc-8b82-11e3-ae4d-d231feb1dc81&restaurantname=Marhaba&restaurantregion=Kaloor';
+				window.location = 'http://www.easysmartfood.co.in/restaurantui.html';
 
 			} else {
 

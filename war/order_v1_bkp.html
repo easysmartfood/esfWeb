@@ -159,19 +159,6 @@ div#orderDetails {
 	padding: 30px;
 	margin-bottom: 30px;
 }
-
-.navbar-inverse {
-	border-color: white;
-	background-image: url('/images/gradient_header.png');
-    background-repeat: repeat-x;
-	
-}
-
-.nav {
-	margin-top: 5px;
-	/* this is a faux center fix for the nav options - adjust this if you wish to change the logo height or the font of the menu items */
-}
-
 </style>
 
 
@@ -190,7 +177,7 @@ div#orderDetails {
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
 				<a class="navbar-brand logo-nav" href="index.html"> <img
 					src="images/FINAL_image1.png" class=""
-					style="width: 100px; height: 50px;">
+					style="width: 150px; height: 75px;">
 				</a>
 			</div>
 
@@ -293,24 +280,11 @@ div#orderDetails {
 
 						<script id="foodMenu" type="text/x-handlebars-template">
 					<ul class="list">					
-					{{#each foodItems}} 				
-
-				<!--	<li class="simpleCart_shelfItem text-left"> -->
-                    <li>
-					<br>
-				    <div class="col-xs-12">
-                    <div class="thumbnail col-lg-4 col-xs-6">
-     					 <div id="mondayimg" >
-    					  <img src="{{thumbnailImage}}" class="img-responsive" alt="Responsive image">
-     					 </div>
-   					</div>
-				<!--	<h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4> -->
-                    <p class="col-lg-4 col-xs-6"><span class="item_price">{{name}}</span></p>
-					<p class="col-lg-1 col-xs-8"><span class="item_price">{{salePrice}}</span></p>
-                    <p class="col-lg-1 col-xs-4"><input type="text" name="item" disabled class="item_quantity" value="1" style="width: 30px; border-radius: 2px; line-height:1.9; margin-left: 5px;"/></p>
-                    <p class="col-lg-2 col-xs-4"><input type="button" class="btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/></p></li>{{/each}}
-					</div>
-					</ul>
+					{{#each foodItems}} 
+					
+					<li class="simpleCart_shelfItem text-left"><h4 class="item_name col-lg-8 col-xs-12">{{name}}</h4><p class="col-lg-1 col-xs-4"><span class="item_price">{{salePrice}}</span></p><p class="col-lg-1 col-xs-4"><input type="text" name="item" disabled class="item_quantity" value="1" style="width: 30px; border-radius: 2px; line-height:1.9; margin-left: 5px;"/></p><p class="col-lg-2 col-xs-4"><input type="button" class="btn btn-primary active" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/></p></li>{{/each}}
+					
+</ul>
 
 					</script>
 
@@ -450,14 +424,10 @@ div#orderDetails {
 
 					<div class="col-lg-4 col-xs-12 col-sm-12">
 
-                       	<h4>EasySmartFood Home Delivery Regions</h4>
-						<iframe frameborder=0 style='width:100%;height:300px' src='//www.zeemaps.com/pub?group=981771&list=1&x=76.262910&y=10.026354&z=6'> </iframe>
-		
-                       
-<!-- 						<h4>Kasim Lane, Kaloor Kochi, India 682017</h4> -->
-<!-- 						<iframe -->
-<!-- 							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081" -->
-<!-- 							frameborder="0" style="border: 0"></iframe> -->
+						<h4>Kasim Lane, Kaloor Kochi, India 682017</h4>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081"
+							frameborder="0" style="border: 0"></iframe>
 
 					</div>
 

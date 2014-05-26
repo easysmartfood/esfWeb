@@ -277,6 +277,12 @@ $(document)
 							.on(
 									'click',
 									function() {
+										var amount = parseInt(totalStr);
+										if( amount < 300) 
+											{
+											 alert("Minimum order Amount is Rs 300. Please add fooditems to your order to meet the minimum Order amount");
+									         return;
+											}
 
 										var data = unescape(
 												getCookie('simpleCart')).split(
