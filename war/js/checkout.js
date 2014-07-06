@@ -259,7 +259,7 @@ $(document)
 					//Initialize Delivery charge
 					$('.simpleCart_shippingCost').text('Rs 0');
 					$('.simpleCart_shippingDistance').text('5 km');
-					$('.simpleCart_packingCost').text('Rs 10');
+					$('.simpleCart_packingCost').text('Rs 20');
 					//Update Amounts
 					updateTotalAmt();
 					

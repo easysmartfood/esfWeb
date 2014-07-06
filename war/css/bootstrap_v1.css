@@ -322,7 +322,7 @@ body {
 	/* 
  	background: url(http://epicfitnesstraining.com/wp-content/uploads/2011/11/vegatables.jpg);
  */
-	background: url(/images/1.jpg);
+	background: url(/images/burger-background.jpg);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center center;
@@ -4856,12 +4856,12 @@ border-top-left-radius
 }
 
 .navbar-inverse .navbar-nav>li>a {
-	color: #ffffff;
+	color: #000000;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus
 	{
-	color: #ffffff;
+	color: #000000;
 	background-color: transparent;
 }
 
