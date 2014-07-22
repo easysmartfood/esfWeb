@@ -771,7 +771,7 @@ pre code {
 
 @media ( min-width : 1200px) {
 	.container {
-		width: 1170px;
+		width: 1170px; 
 	}
 }
 
@@ -4375,7 +4375,7 @@ border-top-left-radius
 .navbar {
 	position: relative;
 	min-height: 50px;
-	margin-bottom: 20px;
+/* 	margin-bottom: 20px; */
 	border: 1px solid transparent;
 }
 
@@ -4530,7 +4530,7 @@ border-top-left-radius
 
 .navbar-brand {
 	float: left;
-	padding: 3px 0px 0px 125px;
+/* 	padding: 3px 0px 0px 125px; */
 	font-size: 18px;
 	line-height: 20px;
 }
@@ -4621,7 +4621,7 @@ border-top-left-radius
 		padding-bottom: 15px;
 	}
 	.navbar-nav.navbar-right:last-child {
-		margin-right: 100px;
+/* 		margin-right: 100px; */
 	}
 }
 
@@ -4837,7 +4837,8 @@ border-top-left-radius
 }
 
 .navbar-inverse {
-	background-color: #ffffff;
+/* 	background-color: #ffffff; */
+	background-color: #526907;
 	border-color: #080808;
 }
 
@@ -4856,7 +4857,8 @@ border-top-left-radius
 }
 
 .navbar-inverse .navbar-nav>li>a {
-	color: #000000;
+/* 	color: #000000; */
+	color: white;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus
@@ -6998,4 +7000,16 @@ th.hidden-lg,td.hidden-lg {
 	.hidden-print,tr.hidden-print,th.hidden-print,td.hidden-print {
 		display: none !important;
 	}
+}
+
+.container-fluid {
+max-width: 970px; 
+margin-right: auto;
+margin-left: auto;
+}
+
+.container {
+max-width: 970px; 
+margin-right: auto;
+margin-left: auto;
 }

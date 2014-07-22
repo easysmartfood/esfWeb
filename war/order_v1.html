@@ -19,6 +19,8 @@
 <!-- <!-- Bootstrap core CSS -->
 <link href="css/bootstrap_v1.css" rel="stylesheet">
 
+<link href="css/font-awesome.min.css" rel="stylesheet">
+
 <!-- 
 <link href="css/bootstrap.min_v1.css" rel="stylesheet">
  -->
@@ -54,7 +56,8 @@ a {
 }
 
 body {
-	background: url('');
+/* 	background: url(''); */
+    background:#f6f1ed;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center center;
@@ -66,11 +69,16 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	color: #000;
+	color: #f6f1ed;
 }
 
 h3,h4,h5 {
 	color: #000;
+	font-family: 'Source Sans Pro'; margin-top: 0px;
+}
+
+p{
+ font-family: 'Source Sans Pro'; margin-top: 0px; color:#333;
 }
 
 .btn-default,.btn-primary,.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open .dropdown-toggle.btn-primary
@@ -137,8 +145,9 @@ span {
 
 .bg {
 	border-radius: 15px;
-	background-color: #f2f2f2;
-	margin-bottom: 5%;
+	background-color: #fff;
+	margin-bottom: 1%;
+	max-width: 970px;
 }
 
 h4 {
@@ -161,15 +170,100 @@ div#orderDetails {
 }
 
 .navbar-inverse {
-	border-color: white;
-	background-image: url('/images/gradient_header.png');
+/* 	border-color: white; */
+/* 	background-image: url('/images/gradient_header.png'); */
     background-repeat: repeat-x;
 	
 }
 
+/* .nav-align{ */
+/* { */
+/* width: 970px; */
+/* margin-right: auto; */
+/* margin-left: auto; */
+/* } */
+
+.container-fluid {
+max-width: 970px; 
+margin-right: auto;
+margin-left: auto;
+}
+
+.container {
+max-width: 970px; 
+margin-right: auto;
+margin-left: auto;
+}
+
 .nav {
-	margin-top: 5px;
+	margin-top: 0px;
 	/* this is a faux center fix for the nav options - adjust this if you wish to change the logo height or the font of the menu items */
+}
+
+.span12{
+/* border:solid 2px black; */
+/* background-color:grey;   */
+}  
+
+div#restaurantDetails {
+margin: 5px;
+padding-left: 0px;
+}
+
+div#restaurantImg {
+padding-left: 0px;
+}
+
+.resto-name {
+color: #303030;
+font-size: 2em;
+font-weight: 900;
+text-align: left;
+margin: 0;
+padding: 0;
+font-family: lato,Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;
+}
+
+.address, .price {
+font-size: 1.2em;
+color: #303030;
+text-transform: lowercase;
+line-height: 1.5em;
+}
+
+.open-time {
+color: #EC7777;
+font-size: .8em;
+line-height: 1.5em;
+text-transform: lowercase;
+}
+
+.cuisine
+{
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: 0 0;
+color:black;
+
+}
+
+.span1{
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: 0 0;
+}
+
+h4,h5,h6 {
+	margin-top: 1px;
+	margin-bottom: 1px;
 }
 
 </style>
@@ -178,6 +272,9 @@ div#orderDetails {
 </head>
 
 <body>
+
+
+    
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -190,36 +287,80 @@ div#orderDetails {
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
 				<a class="navbar-brand logo-nav" href="index.html"> <img
 					src="images/FINAL_image1.png" class=""
-					style="width: 100px; height: 50px;">
+					style="width: 100px; height: 50px;"> 
 				</a>
+				
 			</div>
-
+            
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
+
+
+
 				<ul class="nav navbar-nav navbar-right" id="loginmenu">
 					<li><a href="#" data-toggle="modal" data-target="#myModal">How
 							it Works?</a></li>
-					<li><button type="button" class="btn btn-primary">
-							<a href="/restaurantui.html">Restaurants</a>
-						</button>
+<!-- 					<li><button type="button" class="btn btn-primary"> -->
+<!-- 							<a href="/restaurantui.html">Restaurants</a> -->
+<!-- 						</button> -->
+					<li><a href="/restaurantui.html">Restaurants</a></li>		
 					<li><a href="/profile.html">Create Account</a></li>
 
+
 				</ul>
+
 			</div>
 			<!-- /.navbar-collapse -->
+			
+		
 		</div>
 		<!-- /.container -->
 	</nav>
+    
+
+<!-- 	<nav class="navbar navbar-inverse"> -->
+<!-- 		<div class="container-fluid"> -->
+<!-- 			<div class="navbar-header"> -->
+<!-- 				<button type="button" class="navbar-toggle" data-toggle="collapse" -->
+<!-- 					data-target=".navbar-ex1-collapse"> -->
+<!-- 					<span class="sr-only"> Toggle navigation </span> <span -->
+<!-- 						class="icon-bar"> </span> <span class="icon-bar"> </span> <span -->
+<!-- 						class="icon-bar"> </span> -->
+<!-- 				</button> -->
+<!-- 				You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+<!-- 				<a class="navbar-brand logo-nav" href="index.html"> <img -->
+<!-- 					src="images/FINAL_image1.png" class="" -->
+<!-- 					style="width: 100px; height: 50px;"> -->
+<!-- 				</a> -->
+<!-- 			</div> -->
+
+<!-- 			<!-- Collect the nav links, forms, and other content for toggling --> -->
+<!-- 			<div class="collapse navbar-collapse navbar-ex1-collapse"> -->
+<!-- 				<ul class="nav navbar-nav navbar-right" id="loginmenu"> -->
+<!-- 					<li><a href="#" data-toggle="modal" data-target="#myModal">How -->
+<!-- 							it Works?</a></li> -->
+<!-- 					<li><button type="button" class="btn btn-primary"> -->
+<!-- 							<a href="/restaurantui.html">Restaurants</a> -->
+<!-- 						</button> -->
+<!-- 					<li><a href="/profile.html">Create Account</a></li> -->
+
+<!-- 				</ul> -->
+<!-- 			</div> -->
+<!-- 			<!-- /.navbar-collapse --> -->
+<!-- 		</div> -->
+<!-- 		<!-- /.container --> -->
+<!-- 	</nav> -->
 
 
 	<div class="container bg">
 
+        <div class="span12">
 		<div class="row">
 
-			<div class="col-lg-4 col-xs-6 col-sm-6" id="restaurantImg">
+			<div class="col-lg-2 col-xs-4" id="restaurantImg">
 				<script id="resturantImgTemplate" type="text/x-handlebars-template">
 				<img
-					src={{thumbnailImage}} style="width: 150px; height:120px;margin:5px;">
+					src={{thumbnailImage}} style="width: 130px; height:100px;margin:0px;">
 				</script>
 			</div>
 
@@ -229,32 +370,23 @@ div#orderDetails {
 
 				<script id="foodmenuTemplate" type="text/x-handlebars-template">
 
-			<div class="col-lg-4">
-				<h3>{{name}}</h3>
-				<h4>{{region}}</h4>
-				<h5>{{subRegion}}</h5>
-				<h4>{{deliveryCost}}</h4>
-
-			</div>
-
-			<div class="col-lg-4">
-
 			<div class="col-lg-6">
-				<h4>{{openTime}}</h4>
+				<h3 class="resto-name">{{name}}</h3>
+				<h4 class="address">{{region}}, {{subRegion}}</h4>
+				<div class="open-time" title="">
+				<i class="icon-time"></i>&nbsp;
+				{{openTime}} to
+                {{closeTime}}
+				<span1>&nbsp; </span1>
+				</div>
+                <div class="cuisine" title="">
+			    <i class="icon-food" title="Cuisines"></i>
+ 				<span1>&nbsp;{{cuisine}} </span1>
+                </div>
+
 			</div>
 
-			<div class="col-lg-6">
-			<h4>{{closeTime}}</h4>
-			</div>
-				
-		
-		
 			
-			</div>
-			
-			<div class="col-lg-4">				
-				<h4>{{cuisine}}</h4>
-			</div>			
 			
 		
 			
@@ -266,6 +398,7 @@ div#orderDetails {
 
 
 		</div>
+	  </div>	
 	</div>
 
 	<div class="container bg">
@@ -403,7 +536,7 @@ div#orderDetails {
 						<div class="row" id="checkoutsection">
 
 							<a href="checkout.html"><button type="submit"
-									class="btn btn-primary btn-lg active col-lg-12 col-xs-12"
+									class="btn btn-primary btn-lg active col-lg-8 col-xs-12"
 									id="checkoutbutton">Checkout</button></a>
 
 						</div>
@@ -450,14 +583,14 @@ div#orderDetails {
 
 					<div class="col-lg-4 col-xs-12 col-sm-12">
 
-                       	<h4>EasySmartFood Home Delivery Regions</h4>
-						<iframe frameborder=0 style='width:100%;height:300px' src='//www.zeemaps.com/pub?group=981771&list=1&x=76.262910&y=10.026354&z=6'> </iframe>
+<!--                        	<h4>EasySmartFood Home Delivery Regions</h4> -->
+<!-- 						<iframe frameborder=0 style='width:100%;height:300px' src='//www.zeemaps.com/pub?group=981771&list=1&x=76.262910&y=10.026354&z=6'> </iframe> -->
 		
                        
-<!-- 						<h4>Kasim Lane, Kaloor Kochi, India 682017</h4> -->
-<!-- 						<iframe -->
-<!-- 							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081" -->
-<!-- 							frameborder="0" style="border: 0"></iframe> -->
+						<h4>Kasim Lane, Kaloor Kochi, India 682017</h4>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3929.3156656383308!2d76.28919364999999!3d9.990762400000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d415acb6207%3A0xd26f71adbe91e7df!2sKasim+Ln%2C+Kaloor!5e0!3m2!1sen!2sus!4v1395391795081"
+							frameborder="0" style="border: 0"></iframe>
 
 					</div>
 
