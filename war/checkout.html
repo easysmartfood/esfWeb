@@ -168,6 +168,42 @@ a,a:hover {
 	/* this is a faux center fix for the nav options - adjust this if you wish to change the logo height or the font of the menu items */
 }
 
+p.lbl {
+padding: 0;
+color: #303030;
+font-size: 1.0em;
+text-transform: uppercase;
+margin: .5em 0 0;
+}
+
+.chosen-container-inner {
+font-size: 1em;
+position: relative;
+display: inline-block;
+vertical-align: middle;
+zoom: 1;
+border: .125em solid #ccc;
+width: 98%;
+padding: 1%;
+margin: .35em 0;
+background-color: #fff;
+}
+
+.chosen-container {
+position: relative;
+display: inline-block;
+vertical-align: middle;
+font-size: 13px;
+zoom: 1;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+border: .125em solid #775c48;
+padding: .5em 1%;
+margin: .35em 0;
+background-color: #fff;
+}
+
 </style>
 <script type="text/javascript">
 	simpleCart.cartHeaders = [ "Name", "Price", "Quantity", "Total",
@@ -348,6 +384,24 @@ a,a:hover {
 
 		<div class="col-lg-6">
 
+		    <p class="lbl">Your order will be delivered at the earliest on:</p>
+		    <div id='dtime'>
+				<p style="font-size: 1.5em;">
+				12:00PM-
+				Today
+				</p>
+				<p>
+				<a href="javascript:change_time();">CHANGE TO A LATER DATE OR
+				TIME?</a>
+				</p>
+				<div class="form-group">
+				<div class='input-group date' id='datetimepicker1'>
+					                    <input type='text' class="form-control" />
+					                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+			    </div>
+			    </div>
+			</div>
 			<div class="col-lg-offset-4 col-lg-8 col-xs-12">
 
 				<button type="submit" id="orderbutton"
@@ -433,6 +487,9 @@ a,a:hover {
 	<script src="js/bootstrap.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/checkout.js"></script>
+	<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
+    <script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/bootstrap-datetimepicker.js"></script>
+    
 
 	<script>
 		var delete_cookie = function(name) {
@@ -466,7 +523,26 @@ a,a:hover {
   ga('create', 'UA-49982128-1', 'easysmartfood.co.in');
   ga('send', 'pageview');
 
-</script>
+   </script>
+   <script>
+   $('#datetimepicker1').hide();
+   function change_time(){
+	   $('#datetimepicker1').show();
+	   $('#datetimepicker1').datetimepicker();
+       
+       $('#datetimepicker1').data("DateTimePicker").setMinDate(new Date("june 22, 2014"));
+                                   
+      
+       $('#datetimepicker1').data("DateTimePicker").setMaxDate(new Date("june 26, 2014"));
+      
+      
+       $('#datetimepicker1').data("DateTimePicker").setDate("06/22/2014");
+// 	   var imgHtml = "<div id=\"otime\" style=\"display: block;\" class=\"grid_16 suffix_4 prefix_4\"><p class=\"lbl\">DELIVERY DATE</p><select name=\"date\" id=\"date\" onchange=\"advance();\" class=\"chosen-select chosen-container-inner\" data-placeholder=\"Select or type location\" style=\"width: 15%; border: 0.125em solid rgb(204, 204, 204); display: none;\" tabindex=\"-1\"><option selected=\"selected\" value=\"2014-07-23\">July 23</option><option value=\"2014-07-24\">July 24</option><select name=\"time\" id=\"time\" class=\"chosen-select chosen-container-inner\" data-placeholder=\"Select or type location\" style=\"width: 15%; border: 0.125em solid rgb(204, 204, 204); display: none;\" tabindex=\"-1\"><option value=\"12:00\">12:00</option><option value=\"12:15\">12:15</option> </div><div class=\"chosen-container chosen-container-single\" style=\"width: 55%;\" title=\"\" id=\"date_chosen\"><a class=\"chosen-single\" tabindex=\"-1\"><span>July 24</span><div><b></b></div></a></div><div class=\"chosen-drop\"><div class=\"chosen-search\"><input type=\"text\" autocomplete=\"off\" tabindex=\"5\"></div><ul class=\"chosen-results\" tabindex=\"-1\"><li class=\"active-result result-selected highlighted\" style=\"\" data-option-array-index=\"0\">July 23</li></ul></div>";
+	   
+// 	   $('#dtime').html(imgHtml);
+   }
+   </script>
+
 </body>
 
 </html>
