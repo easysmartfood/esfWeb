@@ -386,13 +386,12 @@ background-color: #fff;
 
 		    <p class="lbl">Your order will be delivered at the earliest on:</p>
 		    <div id='dtime'>
-				<p style="font-size: 1.5em;">
-				12:00PM-
+				<p style="font-size: 1.5em;" id='deliveryTime'>
 				Today
 				</p>
 				<p>
-				<a href="javascript:change_time();">CHANGE TO A LATER DATE OR
-				TIME?</a>
+<!-- 				<a href="javascript:change_time();">CHANGE TO A LATER DATE OR -->
+<!-- 				TIME?</a> -->
 				</p>
 				<div class="form-group">
 				<div class='input-group date' id='datetimepicker1'>
@@ -541,6 +540,60 @@ background-color: #fff;
 	   
 // 	   $('#dtime').html(imgHtml);
    }
+   </script>
+   
+   <script>
+   function calcTime(city, offset) {
+	    // create Date object for current location
+	    var d = new Date();
+
+	    // convert to msec
+	    // subtract local time zone offset
+	    // get UTC time in msec
+	    var utc = d.getTime() - (d.getTimezoneOffset() * 60000);
+
+	    // create new Date object for different city
+	    // using supplied offset
+	    var nd = new Date(utc + (3600000*offset));
+
+	   // alert(nd.toLocaleString());
+	   // var ndtest = nd.toDateString() + ' 22:20';
+	   // nd =  new Date(ndtest);
+	    
+	   // alert(nd.toLocaleString());
+	    
+	    var from = nd.toDateString() + ' 12:00';
+	    var to= nd.toDateString() + ' 23:00';
+	    //var from = '07/27/2014 00:00'
+	    var fromDt = new Date(from);
+	    var toDt = new Date(to);
+	    //alert(fromDt.toLocaleString());
+	    //alert(toDt.toLocaleString());
+	    // return time as a string
+	    var returnDate;
+	    if(nd>=fromDt&&nd<=toDt)
+	    	{
+	    	returnDate=nd.toLocaleString() + "- Today";
+	    	}
+	    else if(nd<=fromDt)
+	    	{
+	    	returnDate=fromDt.toLocaleString() + "- Today";
+	    	}
+	    else
+	    	{
+	    	  var tomorrow = nd; 
+	    	  tomorrow.setDate(nd.getDate() + 1);	  
+	    	  var tomorowDate = tomorrow.toDateString() + ' 12:00';
+	    	  returnDate=tomorowDate.toLocaleString() + "- Tomorrow";
+	    	  //alert(returnDate);
+	    	}
+	    
+	    return returnDate;
+	}
+   
+   document.getElementById("deliveryTime").innerHTML = calcTime('Kochi', '+20.5');
+
+	//alert(calcTime('Bombay', '-6.5'));
    </script>
 
 </body>
