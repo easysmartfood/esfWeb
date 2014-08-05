@@ -573,25 +573,28 @@ background-color: #fff;
 	    var returnDate;
 	    if(nd>=fromDt&&nd<=toDt)
 	    	{
-	    	returnDate=nd.toLocaleString() + "- Today";
+	    	returnDate=nd.getHours() + ':' + nd.getMinutes() + "- Today";
+	    	//returnDate=nd.toLocaleString() + "- Today";
 	    	}
 	    else if(nd<=fromDt)
 	    	{
-	    	returnDate=fromDt.toLocaleString() + "- Today";
+	    	returnDate=nd.getHours() + ':' + nd.getMinutes() + "- Today";
+	    	//returnDate=fromDt.toLocaleString() + "- Today";
 	    	}
 	    else
 	    	{
 	    	  var tomorrow = nd; 
 	    	  tomorrow.setDate(nd.getDate() + 1);	  
 	    	  var tomorowDate = tomorrow.toDateString() + ' 12:00';
-	    	  returnDate=tomorowDate.toLocaleString() + "- Tomorrow";
+	    	  returnDate=tomorowDate.getHours() + ':' + tomorowDate.getMinutes() + "- Tomorrow";
+	    	 // returnDate=tomorowDate.toLocaleString() + "- Tomorrow";
 	    	  //alert(returnDate);
 	    	}
 	    
 	    return returnDate;
 	}
    
-   document.getElementById("deliveryTime").innerHTML = calcTime('Kochi', '+20.5');
+   document.getElementById("deliveryTime").innerHTML = calcTime('Kochi', '+19.5');
 
 	//alert(calcTime('Bombay', '-6.5'));
    </script>

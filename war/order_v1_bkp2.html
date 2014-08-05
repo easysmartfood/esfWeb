@@ -65,8 +65,7 @@ p {
 span {
 	margin-top: 10px;
 	padding: 5px;
-/* 	font-size: 20px; */
-	font-size: 15px;
+	font-size: 20px;
 	color: #000;
 }
 
@@ -238,12 +237,6 @@ h4,h5,h6 {
 	margin-top: 1px;
 	margin-bottom: 1px;
 }
-
-.thumbnail {
-margin-top: 10px;
-margin-bottom: 0px; 
-}
-
 </style>
 
 
@@ -357,15 +350,16 @@ margin-bottom: 0px;
 					<ul class="ca-menu">			
 					{{#each foodItems}} 				
                     <li>
+					<br>
 				    <div class="ca-content">
                     <div class="thumbnail col-sm-1 col-xs-1">
      					 <div id="mondayimg">
     					  <img src="{{thumbnailImage}}" class="img-responsive" alt="Responsive image">
      					 </div>
    					</div>
-					<p class="col-sm-2 col-xs-2 ca-main">{{name}}</p>
-					<p class="col-sm-6 col-xs-6 ca-sub">{{description}}</p>
+					<p class="col-sm-7 col-xs-7 ca-main">{{name}}</p>
 					<p class="col-sm-1 col-xs-1 ca-sub"><span class="item_price">{{salePrice}}</span></p>
+                    <p class="col-sm-1 col-xs-1"><input type="text" name="item" disabled class="item_quantity ca-sub" value="1" style="width: 20px; border-radius: 1px; line-height:0.8; margin-left: 5px;"/></p>
                     <p class="col-sm-1 col-xs-1">
 							<input type="button" class="btn btn-primary active ca-icon" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/>
 					</p>
@@ -383,15 +377,16 @@ margin-bottom: 0px;
 					<ul class="ca-menu">			
 					{{#each foodItems}} 				
                     <li>
+					<br>
 				    <div class="ca-content">
 					<div class="thumbnail col-sm-1 col-xs-1">
      					 <div id="mondayimg">
     					  <img src="{{thumbnailImage}}" class="img-responsive" alt="Responsive image">
      					 </div>
    					</div>
-					<p class="col-sm-2 col-xs-2 ca-main">{{name}}</p>
-					<p class="col-sm-6 col-xs-6 ca-sub">{{description}}</p>
+					<p class="col-sm-7 col-xs-7 ca-main">{{name}}</p>
 					<p class="col-sm-1 col-xs-1 ca-sub"><span class="item_price">{{salePrice}}</span></p>
+                    <p class="col-sm-1 col-xs-1"><input type="text" name="item" disabled class="item_quantity ca-sub" value="1" style="width: 20px; border-radius: 1px; line-height:0.8; margin-left: 5px;"/></p>
                     <p class="col-sm-1 col-xs-1">
 							<input type="button" class="btn btn-primary active ca-icon" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/>
 					</p>
@@ -409,15 +404,16 @@ margin-bottom: 0px;
 					<ul class="ca-menu">			
 					{{#each foodItems}} 				
                     <li>
+					<br>
 				    <div class="ca-content">
 					 <div class="thumbnail col-sm-1 col-xs-1">
      					 <div id="mondayimg">
     					  <img src="{{thumbnailImage}}" class="img-responsive" alt="Responsive image">
      					 </div>
    					</div>
-					<p class="col-sm-2 col-xs-2 ca-main">{{name}}</p>
-					<p class="col-sm-6 col-xs-6 ca-sub">{{description}}</p>
+					<p class="col-sm-7 col-xs-7 ca-main">{{name}}</p>
 					<p class="col-sm-1 col-xs-1 ca-sub"><span class="item_price">{{salePrice}}</span></p>
+                    <p class="col-sm-1 col-xs-1"><input type="text" name="item" disabled class="item_quantity ca-sub" value="1" style="width: 20px; border-radius: 1px; line-height:0.8; margin-left: 5px;"/></p>
                     <p class="col-sm-1 col-xs-1">
 							<input type="button" class="btn btn-primary active ca-icon" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/>
 					</p>
@@ -434,15 +430,16 @@ margin-bottom: 0px;
 					<ul class="ca-menu">			
 					{{#each foodItems}} 				
                     <li>
+					<br>
 				    <div class="ca-content">
 					 <div class="thumbnail col-sm-1 col-xs-1">
      					 <div id="mondayimg">
     					  <img src="{{thumbnailImage}}" class="img-responsive" alt="Responsive image">
      					 </div>
    					</div>
-					<p class="col-sm-2 col-xs-2 ca-main">{{name}}</p>
-					<p class="col-sm-6 col-xs-6 ca-sub">{{description}}</p>
+					<p class="col-sm-7 col-xs-7 ca-main">{{name}}</p>
 					<p class="col-sm-1 col-xs-1 ca-sub"><span class="item_price">{{salePrice}}</span></p>
+                    <p class="col-sm-1 col-xs-1"><input type="text" name="item" disabled class="item_quantity ca-sub" value="1" style="width: 20px; border-radius: 1px; line-height:0.8; margin-left: 5px;"/></p>
                     <p class="col-sm-1 col-xs-1">
 							<input type="button" class="btn btn-primary active ca-icon" value="Add" onclick="simpleCart.add('name={{name}}', 'price={{salePrice}}','quantity=1','id={{foodUuid}}');"/>
 					</p>
