@@ -185,7 +185,7 @@
 							$('#checkoutbutton').text('Guest Checkout');
 							
 							
-							$('#checkoutsection').append('<a href="login.html" class="col-lg-12 col-xs-12" id="search"><h3 class="text-center">Login ?</h3></a>');
+							$('#checkoutsection').append('<a href="login.html" id="search"><button type="button" class="btn btn-primary active order-icon">Login ?</button></a>');
 							
 							
 							

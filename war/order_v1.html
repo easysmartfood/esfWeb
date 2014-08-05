@@ -461,7 +461,8 @@ margin-bottom: 0px;
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4 col-xs-12" id="orderDetails">
-						<h2 style="color: #000;">Order Details</h2>
+						<div class="orderpane">
+						<h2 style="color: #000;font-family: 'WebSymbolsRegular', cursive;">Order Details</h2>
 						<div class="simpleCart_items"></div>
 						<br>
 						<hr>
@@ -474,18 +475,26 @@ margin-bottom: 0px;
 								class="simpleCart_quantity col-lg-2 col-xs-4"></span> <span
 								class="simpleCart_total col-lg-6 col-xs-4"></span> <br />
 						</div>
-						<br>
-						<div class="row">
-							<a href="javascript:;" class="simpleCart_empty col-lg-6"><button
-									type="button" class="btn btn-default">Empty Cart</button></a>
 						</div>
 						<br>
-
-						<div class="row" id="checkoutsection">
-
-							<a href="checkout.html"><button type="submit"
-									class="btn btn-primary btn-lg active col-lg-8 col-xs-12"
+						<div class="orderpane">
+						
+						
+						<span>
+						<a href="javascript:;" class="simpleCart_empty">
+							<button type="button" class="btn btn-primary active order-icon">Empty Cart</button>
+						</a>
+						</span> 
+						<span id="checkoutsection">
+						
+						</span> 
+						
+						<span>
+						<a href="checkout.html"><button type="submit"
+									class="btn btn-primary active order-icon"
 									id="checkoutbutton">Checkout</button></a>
+						</span> 
+						
 						</div>
 					</div>
 				</div>
